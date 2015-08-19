@@ -1,0 +1,1 @@
+/home/h80s/.vimrc
