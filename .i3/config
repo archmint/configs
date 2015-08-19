@@ -1,0 +1,212 @@
+## ~/.i3/config
+##
+## Please see http://i3wm.org/docs/userguide.html for a complete reference!
+##
+##
+## additionally, see `man i3` for info on using i3-2m
+
+## set modifier key to windows (meta) key
+set $mod Mod4
+
+## set default font (you can set your own - make sure you install it first ;)
+## ** Must install `ttf-dejavu` **
+font pango:DejaVu Sans Mono 10
+## *(weird side note: if you put a comment after the above line, it enlarges the font and messes it up)*
+
+## set newly opened window styles
+## ** UNCOMMENT FOR NO TITLE BARS (my favorite) **
+#new_window none
+#new_float pixel 1
+
+## set different border styles
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+## Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+## start a terminal  :) you will use this a lot (maybe)
+bindsym $mod+Return exec i3-sensible-terminal
+
+## kill focused window
+bindsym $mod+q kill
+
+## start dmenu  (a program launcher... quite useful... how you open anything in i3)
+## ** YOU MUST INSTALL `dmenu` FOR THIS TO WORK **m 
+bindsym $mod+d exec dmenu_run
+## side note: sometimes `dmenu` comes with `suckless-tools`, but many times this partial package is supported OR it is its own package
+
+## change focus  (vim-like)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+## alternatively, you can use the cursor keys:  nah!! :P
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
+
+## move focused window  (vim-like)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+## alternatively, you can use the cursor keys:  nah!! :P
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
+
+## split in horizontal orientation
+## (this cannot be $mod+h since that is taken above by "focus left")
+bindsym $mod+z split h
+
+## split in vertical orientation
+bindsym $mod+v split v
+
+## enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+## change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+## toggle tiling / floating  (doesn't work that well ;P)
+bindsym $mod+Shift+space floating toggle
+
+## change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+## focus the parent container
+bindsym $mod+a focus parent
+
+## focus the child container
+bindsym $mod+c focus child
+
+## switch to workspace  (binary! :D)
+bindsym $mod+1 workspace 0001
+bindsym $mod+2 workspace 0010
+bindsym $mod+3 workspace 0011
+bindsym $mod+4 workspace 0100
+bindsym $mod+5 workspace 0101
+bindsym $mod+6 workspace 0110
+bindsym $mod+7 workspace 0111
+bindsym $mod+8 workspace 1000
+bindsym $mod+9 workspace 1001
+bindsym $mod+0 workspace 1010
+
+## move focused container to workspace  (binary! :D)
+bindsym $mod+Shift+1 move container to workspace 0001
+bindsym $mod+Shift+2 move container to workspace 0010
+bindsym $mod+Shift+3 move container to workspace 0011
+bindsym $mod+Shift+4 move container to workspace 0100
+bindsym $mod+Shift+5 move container to workspace 0101
+bindsym $mod+Shift+6 move container to workspace 0110
+bindsym $mod+Shift+7 move container to workspace 0111
+bindsym $mod+Shift+8 move container to workspace 1000
+bindsym $mod+Shift+9 move container to workspace 1001
+bindsym $mod+Shift+0 move container to workspace 1010
+
+
+## reload the configuration file
+bindsym $mod+Shift+c reload
+
+## restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+## USEFUL!
+bindsym $mod+Shift+r restart
+
+## exit i3 (logs you out of your X session)
+## ** BE CAREFUL! THERE IS NO "Do you want to log out" WITH A y/n BUTTON! **
+bindsym $mod+Shift+e exit
+
+## resize window (you can also use the mouse for that)
+mode "resize" {
+        ## These bindings trigger as soon as you enter the resize mode
+
+        ## Pressing h will shrink the window’s width.
+        ## Pressing l will grow the window’s width.
+        ## Pressing k will shrink the window’s height.
+        ## Pressing j will grow the window’s height.
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        ## same bindings, but for the arrow keys
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+        ## back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+## resize (works only on floating windows)
+## ** HONESTLY, DRAGING THE BORDER WITH MOUSE (although hard to grab that one pxl somethimes) WORKS BETTER THAN THIS **
+bindsym $mod+r mode "resize"
+
+floating_minimum_size 75 x 50
+
+## set keyboard rate (faster)
+exec --no-startup-id xset r rate 150 25
+## ** comment above and uncomment below for more moderate key repeat speed **
+#exec --no-startup-id xset r rate 420 50
+
+## use the next single-commented line if you have nm-applet to control wifi)
+## ** YOU COULD INSTALL `nm-applet` OR `konnman` OR ANOTHER NETWORK CONFIGURATIONS MANAGER **
+## ** OR YOU COULD JUST RUN `wifi-menu` (like me :P) **
+#exec --no-startup-id nm-applet
+
+## use next line if synclient is your touchpad manager
+## ** BE SURE TO INSTALL ALL NECESSARY synclient PACKAGES (should be covered in install) **
+exec --no-startup-id synclient HorizTwoFingerScroll=1
+
+## audio and brightness
+bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 1 && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 1 && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id ponymix toggle
+bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/bin/brightness_down.sh 50 # xbacklight -dec 10  # not working?
+bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/bin/brightness_up.sh 50 # xbacklight -inc 10  # not working?
+bindsym XF86Battery exec gnome-power-statistics
+## if above doesn't work, uncomment next line and see if that works
+#bindsym XF86AudioMute exec --no-startup-id pactl list sinks | grep -q Mute:.no && pactl set-sink-mute 1 1 || pactl set-sink-mute 1 0
+
+## toggle touchpad capabilities
+bindsym $mod+m exec --no-startup-id $HOME/bin/toggletouchpad.sh
+
+
+## set some nice colors     (I worked quite hard on these :D)
+##                          border          background      text
+client.focused              #202020         #202020         #ec4431
+client.unfocused            #2c2c2b         #2c2c2b         #8faf9f
+client.focused_inactive     #2c2c2b         #2c2c2b         #8faf9f
+client.urgent               #e89393         #e89393         #ec4431
+
+## the status bar
+## ** MUST INSTALL `i3menu` FOR THIS TO WORK **
+bar {
+    status_command i3status
+    position top
+
+    colors {
+        background          #2c2c2b
+        statusline          #808080
+        separator           #efef8f
+        focused_workspace   #ec4431         #ec4431         #202020
+        active_workspace    #88b090         #202020         #ec4431
+        inactive_workspace  #2c2c2b         #2c2c2b         #ec4431
+        urgent_workspace    #ec4431         #2c2c2b         #ec4431
+    }
+}
+
+## set a background
+## ** FOR THIS BG INSTALL `gnome-backgrounds` **
+exec feh --bg-fill /usr/share/backgrounds/gnome/adwaita-day.jpg
+
