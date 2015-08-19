@@ -1,0 +1,36 @@
+[keybindings]
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_right = <Alt>l
+  go_left = <Alt>h
+  resize_up = <Primary><Shift>k
+  resize_down = <Primary><Shift>j
+  resize_right = <Primary><Shift>l
+  resize_left = <Primary><Shift>h
+  broadcast_all = <Primary>b
+  broadcast_group = <Primary>g
+  broadcast_off = <Primary><Shift>b
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_image = None
+    background_darkness = 0.8
+    scrollback_lines = 1000
+    background_type = transparent
+    use_system_font = False
+    font = DejaVu Sans Mono 11
+    cursor_color = "#ec4431"
+    foreground_color = "#00ff00"
+    scroll_on_output = False
+    icon_bell = False
+    show_titlebar = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
