@@ -15,13 +15,8 @@ font pango:DejaVu Sans Mono 10
 
 ## set newly opened window styles
 ## ** UNCOMMENT FOR NO TITLE BARS (my favorite) **
-#new_window none
-#new_float pixel 1
-
-## set different border styles
-bindsym $mod+t border normal
-bindsym $mod+y border 1pixel
-bindsym $mod+u border none
+new_window pixel 2
+new_float none
 
 ## Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -159,6 +154,10 @@ exec --no-startup-id xset r rate 150 25
 ## ** comment above and uncomment below for more moderate key repeat speed **
 #exec --no-startup-id xset r rate 420 50
 
+## set a background
+## ** FOR THIS BG INSTALL `gnome-backgrounds` as well as feh; then run `feh --bg-fill /path/to/img.png`, for example **
+exec --no-startup-id $HOME/.fehbg
+
 ## use the next single-commented line if you have nm-applet to control wifi)
 ## ** YOU COULD INSTALL `nm-applet` OR `konnman` OR ANOTHER NETWORK CONFIGURATIONS MANAGER **
 ## ** OR YOU COULD JUST RUN `wifi-menu` (like me :P) **
@@ -184,10 +183,14 @@ bindsym $mod+m exec --no-startup-id $HOME/bin/toggletouchpad.sh
 
 ## set some nice colors     (I worked quite hard on these :D)
 ##                          border          background      text
-client.focused              #202020         #202020         #ec4431
+client.focused              #202020         #ec4431         #ec4431
 client.unfocused            #2c2c2b         #2c2c2b         #8faf9f
 client.focused_inactive     #2c2c2b         #2c2c2b         #8faf9f
 client.urgent               #e89393         #e89393         #ec4431
+
+## ** ONLY USE THE BELOW LINES WITH i3-gaps **
+gaps inner 10
+gaps outer 0
 
 ## the status bar
 ## ** MUST INSTALL `i3menu` FOR THIS TO WORK **
@@ -205,8 +208,4 @@ bar {
         urgent_workspace    #ec4431         #2c2c2b         #ec4431
     }
 }
-
-## set a background
-## ** FOR THIS BG INSTALL `gnome-backgrounds` **
-exec feh --bg-fill /usr/share/backgrounds/gnome/adwaita-day.jpg
 

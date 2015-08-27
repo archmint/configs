@@ -85,7 +85,7 @@ let solarized_termtrans=0 " transparent background
 set background=dark
 if &term == "xterm"
     set t_Co=256
-    colorscheme solarized
+    "colorscheme solarized
 endif
 
 " toggle background from light to dark
