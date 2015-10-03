@@ -4,6 +4,18 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" ================ Background and Colors ============
+"let solarized_termtrans=0 " transparent background
+set background=dark
+if &term == "xterm"
+    set t_Co=256
+    colorscheme solarized
+endif
+
+highlight LineNr term=NONE cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+set cursorline
+hi cursorline term=bold cterm=NONE ctermfg=NONE ctermbg=236 gui=NONE guifg=NONE guibg=NONE
+
 " ================ General Config ====================
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -62,8 +74,8 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
-filetype plugin on
-filetype indent on
+"filetype plugin on
+"filetype indent on
 
 set list "start show hidden characters on start
 set listchars=eol:¬,tab:>-,trail:·,extends:>
@@ -79,14 +91,6 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-
-" ================ Background and Colors ============
-let solarized_termtrans=0 " transparent background
-set background=dark
-if &term == "xterm"
-    set t_Co=256
-    "colorscheme solarized
-endif
 
 " toggle background from light to dark
 nmap <leader>b :let &background=(&background == "light" ? "dark" : "light")<cr>

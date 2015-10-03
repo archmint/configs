@@ -1,0 +1,3 @@
+#!/bin/bash
+
+feh --bg-fill "$(ls $HOME/.backgrounds/dark/ | shuf -n 1)"

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$(cat $HOME/.bg_shuf/last)" == "dark" ] && [ -f $HOME/.bg_shuf/light ]; then
+    bg=$(cat $HOME/.bg_shuf/light);
+else
+    lastbg=$(if [ -f $HOME/.bg_shuf/light ]; then cat ~/.bg_shuf/light; else echo ""; fi);
+    bg=$lastbg;
+    while [ "$bg" == "$lastbg" ]; do
+        bg=$(ls $HOME/.backgrounds/light/ | shuf -n 1);
+    done;
+fi;
+feh --bg-fill $HOME/.backgrounds/light/$bg;
+mkdir -p $HOME/.bg_shuf/;
+echo "light" > $HOME/.bg_shuf/last
+echo $bg > $HOME/.bg_shuf/light;

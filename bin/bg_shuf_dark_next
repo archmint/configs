@@ -1,0 +1,34 @@
+#!/bin/bash
+
+lastbg=$(if [ -f ~/.bg_shuf/dark ]; then cat ~/.bg_shuf/dark; else echo ""; fi);
+
+if [ "$(cat $HOME/.bg_shuf/last)" == "light" ] && [ -f $HOME/.bg_shuf/dark ]; then
+    bg=$(cat $HOME/.bg_shuf/dark);
+elif [ "$lastbg" == "" ]; then
+    bg=$(ls $HOME/.backgrounds/dark/ | shuf -n 1);
+else
+    first=$(head -n1 <<< $(ls $HOME/.backgrounds/dark));
+    last=$(tail -n1 <<< $(ls $HOME/.backgrounds/dark));
+    next=0;
+    if [ "$last" == "$lastbg" ]; then
+        bg=$first;
+    else
+        for pic in $(ls ~/.backgrounds/dark); do
+            if [ $next -eq 1 ]; then
+                bg=$pic;
+                break;
+            fi;
+            if [ "$pic" == "$lastbg" ]; then
+                next=1;
+            fi;
+        done;
+    fi;
+    if [ $next -eq 0 ]; then
+        echo "arg";
+        bg=$last;
+    fi
+fi;
+feh --bg-fill $HOME/.backgrounds/dark/$bg;
+mkdir -p $HOME/.bg_shuf;
+echo "dark" > $HOME/.bg_shuf/last
+echo $bg > $HOME/.bg_shuf/dark;

@@ -1,38 +1,59 @@
 [global_config]
-  title_transmit_bg_color = "#5b5955"
-  title_inactive_fg_color = "#a4a6ab"
-  title_transmit_fg_color = "#a4a6ab"
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   title_inactive_bg_color = "#707277"
+  title_inactive_fg_color = "#a4a6ab"
+  title_transmit_bg_color = "#5b5955"
+  title_transmit_fg_color = "#a4a6ab"
 [keybindings]
-  go_up = <Alt>k
-  resize_up = <Primary><Shift>k
-  resize_left = <Primary><Shift>h
+  broadcast_all = <Primary><Alt>b
+  broadcast_group = None
+  broadcast_off = <Primary><Shift>b
   go_down = <Alt>j
-  go_right = <Alt>l
   go_left = <Alt>h
-  resize_right = <Primary><Shift>l
+  go_right = <Alt>l
+  go_up = <Alt>k
+  help = None
+  layout_launcher = <Shift><Alt>l
+  next_profile = <Super>p
   resize_down = <Primary><Shift>j
-[profiles]
-  [[default]]
-    scrollbar_position = hidden
-    palette = "#5b5955:#c4756e:#559a6a:#9b8a4b:#6a8dca:#b577ac:#019baa:#dbdde2:#707277:#f6a299:#82c896:#cab775:#98bbfb:#e5a4db:#53cad9:#f7f9ff"
-    background_image = None
-    background_darkness = 0.79
-    background_type = transparent
-    use_system_font = False
-    cursor_color = "#a4a6ab"
-    foreground_color = "#a4a6ab"
-    scroll_on_output = False
-    icon_bell = False
-    font = Inconsolata Medium 14
-    background_color = "#2d2c28"
+  resize_left = <Primary><Shift>h
+  resize_right = <Primary><Shift>l
+  resize_up = <Primary><Shift>k
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
       profile = default
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#2d2c28"
+    background_darkness = 0.91
+    background_image = None
+    background_type = transparent
+    cursor_color = "#a4a6aa"
+    font = Inconsolata Medium 14
+    foreground_color = "#a4a6ab"
+    icon_bell = False
+    palette = "#5b5955:#c4756e:#559a6a:#9b8a4b:#6a8dca:#b577ac:#0fa9b8:#dbdde2:#707277:#f6a299:#82c896:#cab775:#98bbfb:#e5a4db:#53cad9:#f7f9ff"
+    scroll_on_output = False
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[vim-solarized]]
+    background_color = "#002b36"
+    background_darkness = 0.93
+    background_image = None
+    background_type = transparent
+    font = Inconsolata Medium 14
+    foreground_color = "#839496"
+    icon_bell = False
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scroll_on_output = False
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
