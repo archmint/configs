@@ -1,3 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 
-i3lock -def -c 000000
+cd $HOME/.backgrounds/dark;
+i3lock -deftI 0 -c '002b36' -i $(ls | shuf -n 1);
+cd -;

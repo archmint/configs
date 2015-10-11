@@ -11,10 +11,33 @@ if &term == "xterm"
     set t_Co=256
     colorscheme solarized
 endif
+let g:airline_powerline_fonts=1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+nmap <F8> :TagbarToggle<CR>
+nmap <C-N> :NERDTreeToggle<CR>
+
+" unicode symbols
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
 
 highlight LineNr term=NONE cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 set cursorline
 hi cursorline term=bold cterm=NONE ctermfg=NONE ctermbg=236 gui=NONE guifg=NONE guibg=NONE
+set colorcolumn=80
 
 " ================ General Config ====================
 set number                      "Line numbers are good
@@ -93,7 +116,7 @@ set smartcase       " ...unless we type a capital
 
 
 " toggle background from light to dark
-nmap <leader>b :let &background=(&background == "light" ? "dark" : "light")<cr>
+nmap <leader>b :let &background=(&background == "light" ? "dark" : "light")<cr>:AirlineRefresh<cr>
 
 
 set wildmenu        " visual autocomplete for command menu
@@ -104,45 +127,4 @@ if has('cmdline_info')
     set ruler                   " show the ruler
 endif
 
-let crazy_status=0 " SET TO 1 IF YOU WANT A COOL BUT RESOURCE-INTENSIVE STATUSLINE  (I worked hard on this... :P it's a little too much, sometimes, though)
-if has('statusline') && crazy_status
-    set laststatus=2
-    set statusline=%F%m%r%h%w\ [%4l,%4v]\ [%p%%]%=[FORMAT=%{&ff}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [LEN=%L] 
-
-    if version >= 700
-        function! NormalHighlight()
-            hi StatusLine ctermfg=none
-        endfunction
-
-        function! InsertHighlight()
-            hi StatusLine ctermfg=226
-        endfunction
-
-        function! ReplaceHighlight()
-            hi StatusLine ctermfg=208
-        endfunction
-
-        function! VisualHighlight()
-            hi StatusLine ctermfg=112
-        endfunction
-
-        function! RedrawStatuslineColors(mode)
-            if a:mode == 'n'
-                call NormalHighlight()
-            elseif a:mode == 'i'
-                call InsertHighlight()
-            elseif a:mode == 'R'
-                call ReplaceHighlight()
-            elseif a:mode == 'v' || a:mode == 'V' || a:mode == '^V'
-                call VisualHighlight()
-            endif
-        endfunction
-
-        let &stl.='%{RedrawStatuslineColors(mode())}'
-    endif
-endif
-
-" Fix youcompleteme for non-code files
-" must install vim-youcompleteme (in aptitude)
-"let ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python':1 }
-
+set laststatus=2

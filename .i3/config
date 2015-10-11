@@ -161,10 +161,12 @@ bindsym $mod+x exec --no-startup-id xset r rate 150 25
 ## ** FOR THIS BG INSTALL `gnome-backgrounds` as well as feh; then run `feh --bg-fill /path/to/img.png`, for example **
 exec --no-startup-id $HOME/.fehbg
 
+#exec --no-startup-id (while :; sleep $(cat ~/.bg_shuf/.time); do $HOME/bin/bg_shuf_dark; done &)
+
 ## use the next single-commented line if you have nm-applet to control wifi)
 ## ** YOU COULD INSTALL `nm-applet` OR `konnman` OR ANOTHER NETWORK CONFIGURATIONS MANAGER **
 ## ** OR YOU COULD JUST RUN `wifi-menu` (like me :P) **
-#exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 ## use next line if synclient is your touchpad manager
 ## ** BE SURE TO INSTALL ALL NECESSARY synclient PACKAGES (should be covered in install) **
@@ -223,6 +225,7 @@ bar {
     status_command i3status
     position top
 
+## OLD COLORS (great ... but not solarized xD)
     colors {
         background          #2c2c2b
         statusline          #6692c4
@@ -232,5 +235,15 @@ bar {
         inactive_workspace  #2c2c2b         #2c2c2b         #ec4431
         urgent_workspace    #ec4431         #2c2c2b         #ec4431
     }
+
+## SOLARIZED COLORS
+#    colors {
+#        background          #002b36
+#        statusline          #93a1a1
+#        focused_workspace   #dc322f         #dc322f         #586e75
+#        active_workspace    #88b090         #202020         #ec4431
+#        inactive_workspace  #2c2c2b         #2c2c2b         #ec4431
+#        urgent_workspace    #ec4431         #2c2c2b         #ec4431
+#    }
 }
 
