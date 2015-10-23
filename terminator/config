@@ -44,6 +44,7 @@
     icon_bell = False
     palette = "#5b5955:#c4756e:#559a6a:#9b8a4b:#6a8dca:#b577ac:#0fa9b8:#dbdde2:#707277:#f6a299:#82c896:#cab775:#98bbfb:#e5a4db:#53cad9:#f7f9ff"
     scroll_on_output = False
+    scrollback_lines = 5000
     scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
@@ -57,6 +58,7 @@
     icon_bell = False
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     scroll_on_output = False
+    scrollback_lines = 5000
     scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False

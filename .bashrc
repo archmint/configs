@@ -1,7 +1,17 @@
 ## ~/.bashrc
 
 ## If not running interactively, don't do anything
-[ -z "$PS1" ] && return 
+[ -z "$PS1" ] && return
+
+
+## Make Caps lock useful
+### CAPS tap: <esc>
+### CAPS hold: <C>
+#if ! [ "$DISPLAY" = "" ]; then
+#    setxkbmap -option 'caps:ctrl_modifier'
+#    xcape -e 'Caps_Lock=Escape'
+#fi
+
 
 alias android='(~/android-studio/bin/studio.sh &)'
 
@@ -23,9 +33,13 @@ alias vv='vim ~/.vimrc'
 
 ## term initializations
 if [ "$TERM" = "xterm" ] || [ "$TERM" = "screen-256color" ] || [ "$TERM" = "screen" ]; then
-    PS1="\[\e[0;1;34m\][$(date +%R)] \[\e[00;36m\]${debian_chroot:+($debian_chroot)}\u@\h\[\e[01;34m\]:\w\[\e[00m\] \$ "
+#    PS1="\[\e[0;1;34m\][$(date +%R)] \[\e[00;36m\]${debian_chroot:+($debian_chroot)}\u@\h\[\e[01;34m\]:\w\[\e[00m\] \$ "
+#    PS1="\[\e[0;1;31;40m\]\t \[\e[0;30;47m\]\[\e[37;44m\]\[\e[1;37m\] ${debian_chroot:+($debian_chroot)}\u@\h \[\e[0;34;47m\]\[\e[37;40m\]\[\e[1;32m\] \w \[\e[0;30;49m\]\[\e[00m\] "
+    PS1="\[\e[0m\]\e[K\n\[\e[1;31;44m\]┌\[\e[1;37m\] \t \[\e[0;34;48m\]\e[K\n\[\e[1;31;44m\]└\[\e[1;37;44m\] ${debian_chroot:+($debian_chroot)}\u@\h \[\e[0;34;47m\]\[\e[37;40m\]\[\e[1;32m\] \w \[\e[0;30;49m\]\[\e[00m\] "
 else
-    PS1="\[\e[0;1;36m\][\$(date +%R)] \[\e[00;01;32m\]${debian_chroot:+($debian_chroot)}\u@\h\[\e[01;36m\]:\w\[\e[01;32m\] \$ "
+#    PS1="\[\e[0;1;36m\][\$(date +%R)] \[\e[00;01;32m\]${debian_chroot:+($debian_chroot)}\u@\h\[\e[01;36m\]:\w\[\e[01;32m\] \$ "
+#    PS1="\[\e[0;1;33;44m\][\t] \[\e[0;34;46m\]>\[\e[1;37m\] ${debian_chroot:+($debian_chroot)}\u@\h:\w \[\e[0;36;49m\]>\[\e[00m\] "
+    PS1="\[\e[0m\]\e[K\n\[\e[1;31;44m\]/\[\e[1;37m\]\t \[\e[0;34;48m\]>\e[K\n\[\e[1;31;44m\]\\ \[\e[1;37;44m\]${debian_chroot:+($debian_chroot)}\u@\h \[\e[0;34;47m\]>\[\e[37;40m\]>\[\e[1;32m\] \w \[\e[0;30;49m\]>\[\e[00m\] "
 fi
 
 ## hard screen clear
@@ -42,13 +56,13 @@ bind -x '"\C-t": printf "\ec"'
 
 ## for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000 
+HISTFILESIZE=2000
 
 ## append to the history file, don't overwrite it
-shopt -s histappend 
+shopt -s histappend
 
 ## make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" 
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 ## alerts
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

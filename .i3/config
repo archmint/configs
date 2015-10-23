@@ -28,7 +28,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 ## start dmenu  (a program launcher... quite useful... how you open anything in i3)
-## ** YOU MUST INSTALL `dmenu` FOR THIS TO WORK **m 
+## ** YOU MUST INSTALL `dmenu` FOR THIS TO WORK **m
 bindsym $mod+d exec dmenu_run
 ## side note: sometimes `dmenu` comes with `suckless-tools`, but many times this partial package is supported OR it is its own package
 
@@ -172,8 +172,12 @@ exec --no-startup-id nm-applet
 ## ** BE SURE TO INSTALL ALL NECESSARY synclient PACKAGES (should be covered in install) **
 exec --no-startup-id synclient HorizTwoFingerScroll=1
 exec --no-startup-id synclient TapButton2=3
-exec --no-startup-id synclient Clickpad=0
-exec --no-startup-id synclient PalmMinZ=0
+exec --no-startup-id synclient Clickpad=2
+#exec --no-startup-id synclient PalmMinZ=0
+
+## set Caps Lock to <esc> when pressed and control when held and used with another key
+## ** BE SURE TO INSTALL `xcape` **
+exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
 
 ## use compton for tear-free graphics
 ## ** BE SURE TO INSTALL ALL compton AND PUT THE CONFIG IN ~/.configs/compton.conf **
@@ -201,10 +205,10 @@ bindsym $mod+y exec --no-startup-id $HOME/bin/bg_shuf_dark
 # swap to random light background
 bindsym $mod+u exec --no-startup-id $HOME/bin/bg_shuf_light
 
-# swap to random dark background
+# swap to next dark background
 bindsym $mod+Shift+y exec --no-startup-id $HOME/bin/bg_shuf_dark_next
 
-# swap to random light background
+# swap to next light background
 bindsym $mod+Shift+u exec --no-startup-id $HOME/bin/bg_shuf_light_next
 
 
