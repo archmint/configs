@@ -49,7 +49,9 @@ happyvim(){
     echo '>^_^<';
 }
 
-alias vim='happyvim'
+alias hvim='happyvim'
+alias vi='happyvim' # xD
+#alias vim='happyvim'
 
 alias phenny='cd ~/git/phenny; ./phenny;'
 #alias python=python2
