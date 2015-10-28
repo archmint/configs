@@ -1,27 +1,53 @@
 [global_config]
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  title_font = Inconsolata Italic 9
+  scroll_tabbar = True
+  title_font = Inconsolata Medium 10
   title_inactive_bg_color = "#707277"
   title_inactive_fg_color = "#a4a6ab"
   title_transmit_bg_color = "#5b5955"
   title_transmit_fg_color = "#a4a6ab"
   title_use_system_font = False
+  window_state = fullscreen
 [keybindings]
   broadcast_all = <Primary><Alt>b
   broadcast_group = None
   broadcast_off = <Primary><Shift>b
-  go_down = <Alt>j
-  go_left = <Alt>h
-  go_right = <Alt>l
-  go_up = <Alt>k
+  close_term = None
+  close_window = None
+  cycle_next = None
+  cycle_prev = None
+  edit_window_title = None
+  full_screen = None
+  go_down = <Shift><Alt>j
+  go_left = <Shift><Alt>h
+  go_right = <Shift><Alt>l
+  go_up = <Shift><Alt>k
+  group_all = None
+  group_tab = None
   help = None
-  layout_launcher = <Shift><Alt>l
+  hide_window = None
+  insert_number = None
+  insert_padded = None
+  layout_launcher = None
+  move_tab_left = None
+  move_tab_right = None
+  new_tab = None
+  new_terminator = None
+  new_window = None
   next_profile = <Super>p
+  prev_tab = None
   previous_profile = <Shift><Super>p
-  resize_down = <Primary><Shift>j
-  resize_left = <Primary><Shift>h
-  resize_right = <Primary><Shift>l
-  resize_up = <Primary><Shift>k
+  reset = None
+  resize_down = <Primary><Shift><Alt>j
+  resize_left = <Primary><Shift><Alt>h
+  resize_right = <Primary><Shift><Alt>l
+  resize_up = None
+  rotate_ccw = None
+  rotate_cw = None
+  scaled_zoom = None
+  toggle_zoom = None
+  ungroup_all = None
+  ungroup_tab = None
 [layouts]
   [[default]]
     [[[child1]]]
@@ -48,7 +74,7 @@
     scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
-  [[vim-solarized]]
+  [[a-vim-solarized]]
     background_color = "#002b36"
     background_darkness = 0.93
     background_image = None
@@ -57,6 +83,21 @@
     foreground_color = "#839496"
     icon_bell = False
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scroll_on_output = False
+    scrollback_lines = 5000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[light]]
+    background_color = "#fef9ec"
+    background_darkness = 0.91
+    background_image = None
+    background_type = transparent
+    cursor_color = "#6d727e"
+    font = Inconsolata Medium 14
+    foreground_color = "#6d727e"
+    icon_bell = False
+    palette = "#c5c1b4:#e75c58:#00a250:#a08a00:#208ffb:#d160c4:#00a4c1:#3e424d:#a1a6b2:#b22b31:#007427:#715f00:#0065ca:#a03196:#007693:#282c36"
     scroll_on_output = False
     scrollback_lines = 5000
     scrollbar_position = hidden

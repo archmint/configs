@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+# Must have inkscape installed
+if [ ! "$(which convert)" ]; then
+    echo -e "\t\e[31;1mYou must install \e[4mconvert\e[24m from \e[4mimagemagick\e[24m in order to convert .svg files to .png files\e[39;21m";
+    exit 1; # convert not installed
+fi
+
+# Must have at least one argument
+if [ $# -lt 1 ]; then
+    echo -e "\t\e[31;1mExpected exactly \e[4mone\e[24m argument: a .svg file\e[39;21m"
+    exit 2; # Must pass in .png or .jpg file as first parameter
+fi
+
+# First arg must end with .png or .jpg and must have at least a 1 char prefix
+# Also note, it SHOULD be 192 pixels
+if [ ! $(grep -E ".\.(png|jpg)" <<< "$1") ]; then
+    echo -e "\t\e[31;1mExpected a .png or .jpg file\e[39;21m";
+    exit 3; # not a .png or .jp file extension
+fi;
+
+# Strip the extension away and strip leading pathname components
+n=${1:t:r};
+
+dpi_names=("extra_extra_extra_high" "extra_extra_high" "extra_high" "high" "medium" "low");
+dpi_pxs=("192" "180" "96" "72" "48" "36");
+
+for i in {1..6}; do
+    dpi=${dpi_pxs[$i]};
+    png_name="${n}_${dpi_names[$i]}.png";
+    echo "\e[1mconverting \e[34m${1}\e[39m to \e[34m${png_name}\e[39m \e[35m${dpi}x${dpi}\e[39m";
+    convert $1 -resize ${dpi}x${dpi} $png_name;
+done;

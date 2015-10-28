@@ -1,186 +1,124 @@
 "~/.vimrc
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-" PROBABLY DON'T NEED THIS (in Linux)
-"if filereadable(expand("~/.vim/vundles.vim"))
-"    source ~/.vim/vundles.vim
-"endif
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" functionality
+set nocompatible
+filetype off
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin('~/.config/nvim/bundle')
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tomtom/tcomment_vim'
-"Plugin 'bling/vim-airline' " if on arch, recommend installing vim-airline w/ pacman
-Plugin 'tpope/vim-fugitive'
-Plugin 'tmhedberg/matchit'
-Plugin 'gioele/vim-autoswap'
-Plugin 'mhinz/vim-startify'
+" Plugins that blend in
+Plugin 'L9'
+Plugin 'Raimondi/delimitMate'
+"Plugin 'Valloric/YouCompleteMe' " if on arch, I recommend installing vim-youcompleteme-git
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'ervandew/supertab'
+Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'luochen1990/rainbow'
 Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
-Plugin 'vim-scripts/a.vim'
-Plugin 'vim-scripts/Color-Sampler-Pack'
+Plugin 'sickill/vim-pasta'
+Plugin 'tmhedberg/matchit'
+Plugin 'vim-airline'
+" Plugins that don't blend in (require more insight as to how they work ... key bindings, etc)
+Plugin 'a.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mbbill/undotree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'L9'
-Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/Color-Sampler-Pack'
+Plugin 'vim-scripts/align'
+" Color and fun :)
+Plugin 'vim-scripts/TeTrIs.vim'
 Plugin 'vim-scripts/xoria256.vim'
-"Plugin 'file:///home/gmarik/path/to/plugin'
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Plugin 'user/L9', {'name': 'newL9'}
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
 
-" turn on syntax highlighting
-syntax on
-
-set laststatus=2
-
-" set ; as easily accessible : (WHO uses ;?)
-nnoremap ; :
-
-" vim-taglist
-nmap <F8> :TagbarToggle<CR>
-
-" don't forget to be happy when you are coding!
-au VimEnter * echom ">^_^<"
-
-" ================ Background and Colors ============
-"let solarized_termtrans=0 " transparent background
-set background=dark
-if &term == "xterm"
-    set t_Co=256
-    let g:airline_powerline_fonts=1
-    " colorscheme monokai
-    " colorscheme badwolf
-    " colorscheme wombat256mod
-    " airline - fancy fonts?
-    " colorscheme jellybeans
-    " colorscheme solarized
-    " let g:airline_theme='solarized'
-    colorscheme xoria256
-    let g:airline_theme='badwolf'
-else
-    set t_Co=8
-    colorscheme darkZ
-    " let g:airline_theme='badwolf'
-    " let g:airline_theme='luna'
-    " let g:airline_theme='molokai'
-    " let g:airline_theme='serene'
-    let g:airline_theme='raven'
-endif
-
-" set background to be slightly transparent in solarized
-"let g:solarized_termtrans=1 " messes up solarized light and other colorschemes
-
-" change the colorscheme and AirlineTheme at the same time flawlessly
-function! s:Color(scheme)
-  execute "colorscheme " . a:scheme
-  AirlineRefresh
-endfunction
-
-" make s:Color a little easier to call by making it a command
-command! -nargs=1 CL call s:Color(<f-args>)
-
-" Better idea is to map Caps to <esc>/<C> with:
-"   setxkbmap -option 'caps:ctrl_modifier'
-"   xcape -e 'Caps_Lock=Escape'
-" inside of you .profile or rc
-" However, this is an interesting idea:
-"inoremap <S-j><S-j> <esc>
-"vnoremap <S-j><S-j> <esc>
-
-" settings
-set noshiftround " don't round indent to multiple of 'shiftwidth'
-set wrap " wrap text when reaches end
-set number " show numbers on left
-set relativenumber " show line number relative to other lines (if you like that)
-set cursorline
-set colorcolumn=81
-
-"highlight LineNr term=NONE cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
-"hi cursorline term=bold cterm=NONE ctermfg=NONE ctermbg=236 gui=NONE guifg=NONE guibg=NONE
-
-" ================ General Config ====================
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-"set visualbell                  "No sounds --> this slows down vim (sometimes) significantly
-set autoread                    "Reload files changed outside vim
-
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
+set history=10000
+set autoread
 set hidden
+let mapleader=','
+set scrolloff=4
+set mouse=""
+set virtualedit="block"
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
-
-" ================ Turn Off Swap Files ==============
-" :( keep using swap files ... that is unless you don't want to
-"    for example, your battery could die and you lose all unsaved work
-"set noswapfile
-"set nobackup
-"set nowb
-
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-" ****************************************************
-" ** MAKE SURE THAT ~/.vim/undo/ EXISTS!            **
-" ** otherwise this won't work (and it's awesome)   **
-if has('persistent_undo')
-    set undodir=~/.vim/undo
-    set undofile
-endif
+" undo (do not change order)
+set noswapfile
+set nobackup
+set nowb
+set undodir=~/.config/nvim/backup
+set undofile
 
 
-" ================ Indentation ======================
+" tabs
 set autoindent
 set smartindent
-set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set expandtab
 
-set list "start show hidden characters on start
-set listchars=eol:¬,tab:>-,trail:·,extends:>
+" search
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<cr>
+" pretty
+" colors
+syntax on
+if &term == "xterm"
+    set laststatus=2
+    set t_Co=256
+    " airline - fancy fonts?
+    let g:airline_powerline_fonts=1
 
-set scrolloff=4         "Start scrolling when we're 4 lines away from margins
+    " colorscheme badwolf
+    " colorscheme gruvbox
+    " colorscheme jellybeans
+    " colorscheme molokai
+    " colorscheme monokai
+    " colorscheme wombat256mod
+    colorscheme xoria256
+    let g:airline_theme='badwolf'
+    " let g:airline_theme='bubblegum'
 
-" ================ Search ===========================
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+    " colorscheme solarized
+    " let g:airline_theme='solarized'
+elseif &term == 'screen-256color'
+    set laststatus=2
+    set t_Co=256
+    colorscheme xoria256
+    let g:airline_powerline_fonts=1
+    " let g:airline_theme='jellybeans'
+    let g:airline_theme='badwolf'
+else
+    set laststatus=1
+    set t_Co=8
+    colorscheme darkZ " get from https://raw.githubusercontent.com/isaacs/.vim/master/colors-all/darkZ.vim
+    let g:airline_theme='raven'
+endif
+" inside window
+set cursorline
+set colorcolumn=91,121
+set list
+set listchars=eol:¬,tab:»»,extends:>,trail:·
+" outside window
+set relativenumber
+set number
+set laststatus=2
+set noshowmode
+set wildmenu
 
+" let vim autoswap in tmux
+" (if using autoswap ... for this turn off noswapfil, no backup, nowb)
+"let g:autoswap_detect_tmux = 1
+
+" activate rainbow parens
+let g:rainbow_active = 1
 
 " toggle background from light to dark
 nmap <leader>b :let &background=(&background == "light" ? "dark" : "light")<cr>:AirlineRefresh<cr>
 
-
-set wildmenu        " visual autocomplete for command menu
-
-" set lazyredraw      " redraw only when needed ==> is lazy! cursor doesn't
-" start at the top with vundle
-
-"if has('cmdline_info')
-"    set ruler                   " show the ruler
-"endif

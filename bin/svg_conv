@@ -1,0 +1,32 @@
+#!/bin/zsh
+
+# Must have inkscape installed
+if [ ! "$(which inkscape)" ]; then
+    echo -e "\t\e[31;1mYou must install \e[4minkscape\e[24m in order to convert .svg files to .png files\e[39;21m";
+    exit 1; # inkscape not installed
+fi
+
+# Must have at least one argument
+if [ $# -lt 1 ]; then
+    echo -e "\t\e[31;1mExpected exactly \e[4mone\e[24m argument: a .svg file\e[39;21m"
+    exit 2; # Must pass in .svg file as first parameter
+fi
+
+# First arg must end with .svg
+if [ ! $(grep -E "*.svg" <<< "$1") ]; then
+    echo -e "\t\e[31;1mExpected a .svg file\e[39;21m";
+    exit 3; # not a .svg file extension
+fi;
+
+# Strip the .svg extension away and strip leading pathname components
+n=${1:t:r};
+
+dpi_names=("extra_extra_extra_high" "extra_extra_high" "extra_high" "high" "medium" "low");
+dpi_pxs=("192" "180" "96" "72" "48" "36");
+
+for i in {1..6}; do
+    dpi=${dpi_pxs[$i]};
+    png_name="${n}_${dpi_names[$i]}.png";
+    echo "\e[1mconverting \e[34m${1}\e[39m to \e[34m${png_name}\e[39m \e[35m${dpi}x${dpi}\e[39m";
+    inkscape -z -e $png_name -w ${dpi} -h ${dpi} ${1} > /dev/null;
+done;

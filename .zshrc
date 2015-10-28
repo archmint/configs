@@ -15,9 +15,6 @@
 # Adjustments would still go to the .zshrc.local file.
 ################################################################################
 
-export PATH="$HOME/bin/:$PATH"
-export EDITOR=vim
-export TERMINAL=terminator
 
 vimSloppyQuit(){
     printf "Silly! You're not in vim! Exit? [\e[1mY\e[0m/n] ";
@@ -29,36 +26,42 @@ vimSloppyQuit(){
     printf ">^_^<\n"
 }
 
+alias tm='tmux -2'
+
 alias q=vimSloppyQuit # takes care of ;q
 alias :q=vimSloppyQuit
 alias wq=vimSloppyQuit # takes care of ;wq
 alias :wq=vimSloppyQuit
 
-happyvim(){
-    chProf=;
+# use sz=1 to change to solarized pallet on entering and leaving vim
+zenvim(){ # the one exception
+    solUsed=; # colorscheme solarized used in vimrc
     if [ "$(grep '  colorscheme solarized' $HOME/.vimrc)" ]; then
-        chProf=true;
+        solUsed=true;
     fi;
-    if [ $chProf ]; then
+    if [ $sz ]; then
         xdotool key "super+p" 2> /dev/null
+        xdotool key "super+p" 2> /dev/null
+    fi
+    if [ ! $solUsed ]; then
+        vim -c':set background=dark | :colorscheme solarized' $*
+    else
+        command vim $*;
     fi;
-    command vim $*;
-    if [ $chProf ]; then
-        xdotool key "super+p" 2> /dev/null;
-    fi;
+    if [ $sz ]; then
+        xdotool key "super+p" 2> /dev/null
+    fi
     echo '>^_^<';
 }
 
-alias hvim='happyvim'
-alias vi='happyvim' # xD
-#alias vim='happyvim'
-
-alias phenny='cd ~/git/phenny; ./phenny;'
-#alias python=python2
+alias zvim='zenvim'
+alias vi='nvim'
 
 #alias android='~/android-studio/bin/studio.sh &'
-alias vz='vim ~/.zshrc && source ~/.zshrc'
-alias vv='if [ -f ~/.vimrc ]; then VIMRC=~/.vimrc; else VIMRC=~/.vim/vimrc; fi; vim $VIMRC'
+alias vz='nvim ~/.zshrc && source ~/.zshrc'
+alias vv='if [ -f ~/.vimrc ]; then VIMRC=~/.vimrc; else VIMRC=~/.vim/vimrc; fi; nvim $VIMRC'
+alias vnv='nvim ~/.config/nvim/init.vim'
+alias vt='nvim ~/.tmux.conf'
 
 ## Inform users about upgrade path for grml's old zshrc layout, assuming that:
 ## /etc/skel/.zshrc was installed as ~/.zshrc,
@@ -153,7 +156,7 @@ WORDCHARS='${WORDCHARS:s@/@}'
 setopt nonomatch
 
 ## warning if file exists ('cat /dev/null > ~/.zshrc')
-setopt NO_clobber
+#setopt NO_clobber
 
 ## don't warn me about bg processes when exiting
 #setopt nocheckjobs
@@ -206,7 +209,7 @@ setopt NO_clobber
 
 ## the default grml setup provides '..' as a completion. it does not provide
 ## '.' though. If you want that too, use the following line:
-#zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' special-dirs true
 
 ## aliases ##
 
