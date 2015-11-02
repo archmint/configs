@@ -1,10 +1,10 @@
-"~/.vimrc
+" ~/.vimrc
 
 " functionality
 set nocompatible
 filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
 Plugin 'VundleVim/Vundle.vim'
 " Plugins that blend in
 Plugin 'L9'
@@ -63,46 +63,24 @@ set expandtab
 " search
 set incsearch
 set hlsearch
-set ignorecase
-set smartcase
 
 " pretty
 " colors
 syntax on
-if &term == "xterm"
-    set laststatus=2
+if &term == "xterm" || &term == 'screen-256-color'
     set t_Co=256
-    " airline - fancy fonts?
+    set background=dark
+    colorscheme monokai
     let g:airline_powerline_fonts=1
-
-    " colorscheme badwolf
-    " colorscheme gruvbox
-    " colorscheme jellybeans
-    " colorscheme molokai
-    " colorscheme monokai
-    " colorscheme wombat256mod
-    colorscheme xoria256
-    let g:airline_theme='badwolf'
-    " let g:airline_theme='bubblegum'
-
-    " colorscheme solarized
-    " let g:airline_theme='solarized'
-elseif &term == 'screen-256color'
-    set laststatus=2
-    set t_Co=256
-    colorscheme xoria256
-    let g:airline_powerline_fonts=1
-    " let g:airline_theme='jellybeans'
     let g:airline_theme='badwolf'
 else
-    set laststatus=1
     set t_Co=8
-    colorscheme darkZ " get from https://raw.githubusercontent.com/isaacs/.vim/master/colors-all/darkZ.vim
-    let g:airline_theme='raven'
+    colorscheme default
+    let g:airline_powerline_fonts=0
 endif
 " inside window
 set cursorline
-set colorcolumn=91,121
+set colorcolumn=81,121
 set list
 set listchars=eol:¬,tab:»»,extends:>,trail:·
 " outside window
@@ -115,6 +93,13 @@ set wildmenu
 " let vim autoswap in tmux
 " (if using autoswap ... for this turn off noswapfil, no backup, nowb)
 "let g:autoswap_detect_tmux = 1
+
+"Make YCM/Snipmate/Supertab/Syntastic play nice together
+let g:SuperTabDefaultCompletionType = '<C-Tab>'
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+let g:ycm_register_as_syntastic_checker = 1
 
 " activate rainbow parens
 let g:rainbow_active = 1

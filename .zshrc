@@ -15,15 +15,17 @@
 # Adjustments would still go to the .zshrc.local file.
 ################################################################################
 
+# (espeak 'Welcome'&) > /dev/null
+
+# vim(){
+#     (espeak 'nvim'&)  > /dev/null;
+#     command nvim $*;
+# }
+
+bindkey -v
 
 vimSloppyQuit(){
-    printf "Silly! You're not in vim! Exit? [\e[1mY\e[0m/n] ";
-    read -sk yn;
-    printf "\n"
-    if [ "$yn" != "N" ] && [ "$yn" != "n" ]; then
-        exit;
-    fi;
-    printf ">^_^<\n"
+    exit
 }
 
 alias tm='tmux -2'
@@ -33,28 +35,6 @@ alias :q=vimSloppyQuit
 alias wq=vimSloppyQuit # takes care of ;wq
 alias :wq=vimSloppyQuit
 
-# use sz=1 to change to solarized pallet on entering and leaving vim
-zenvim(){ # the one exception
-    solUsed=; # colorscheme solarized used in vimrc
-    if [ "$(grep '  colorscheme solarized' $HOME/.vimrc)" ]; then
-        solUsed=true;
-    fi;
-    if [ $sz ]; then
-        xdotool key "super+p" 2> /dev/null
-        xdotool key "super+p" 2> /dev/null
-    fi
-    if [ ! $solUsed ]; then
-        vim -c':set background=dark | :colorscheme solarized' $*
-    else
-        command vim $*;
-    fi;
-    if [ $sz ]; then
-        xdotool key "super+p" 2> /dev/null
-    fi
-    echo '>^_^<';
-}
-
-alias zvim='zenvim'
 alias vi='nvim'
 
 #alias android='~/android-studio/bin/studio.sh &'
@@ -62,6 +42,8 @@ alias vz='nvim ~/.zshrc && source ~/.zshrc'
 alias vv='if [ -f ~/.vimrc ]; then VIMRC=~/.vimrc; else VIMRC=~/.vim/vimrc; fi; nvim $VIMRC'
 alias vnv='nvim ~/.config/nvim/init.vim'
 alias vt='nvim ~/.tmux.conf'
+alias vi3='nvim ~/.i3/config'
+alias vi3s='nvim ~/.i3status.conf +31'
 
 ## Inform users about upgrade path for grml's old zshrc layout, assuming that:
 ## /etc/skel/.zshrc was installed as ~/.zshrc,
@@ -107,11 +89,11 @@ bindkey -M menuselect 'l' vi-forward-char         # right
 bindkey -M menuselect 'j' vi-down-line-or-history # bottom
 
 ## set command prediction from history, see 'man 1 zshcontrib'
-#is4 && zrcautoload predict-on && \
-#zle -N predict-on         && \
-#zle -N predict-off        && \
-#bindkey "^X^Z" predict-on && \
-#bindkey "^Z" predict-off
+# is4 && zrcautoload predict-on && \
+# zle -N predict-on         && \
+# # zle -N predict-off        && \
+# bindkey "^X^Z" predict-on && \
+# bindkey "^Z" predict-off
 
 ## press ctrl-q to quote line:
 mquote () {
@@ -209,7 +191,7 @@ setopt nonomatch
 
 ## the default grml setup provides '..' as a completion. it does not provide
 ## '.' though. If you want that too, use the following line:
-zstyle ':completion:*' special-dirs true
+# zstyle ':completion:*' special-dirs true
 
 ## aliases ##
 
@@ -264,12 +246,12 @@ zstyle ':completion:*' special-dirs true
 #manzsh()  { /usr/bin/man zshall |  most +/"$1" ; }
 
 ## Switching shell safely and efficiently? http://www.zsh.org/mla/workers/2001/msg02410.html
-#bash() {
-#    NO_SWITCH="yes" command bash "$@"
-#}
-#restart () {
-#    exec $SHELL $SHELL_ARGS "$@"
-#}
+bash() {
+   NO_SWITCH="yes" command bash "$@"
+}
+restart () {
+   exec $SHELL $SHELL_ARGS "$@"
+}
 
 ## Handy functions for use with the (e::) globbing qualifier (like nt)
 #contains() { grep -q "$*" $REPLY }
@@ -328,11 +310,11 @@ zstyle ':completion:*' special-dirs true
 #}
 
 ## Memory overview
-#memusage() {
+#
 #    ps aux | awk '{if (NR > 1) print $5;
 #                   if (NR > 2) print "+"}
 #                   END { print "p" }' | dc
-#}
+# }
 
 ## print hex value of a number
 #hex() {

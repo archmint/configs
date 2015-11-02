@@ -1,27 +1,24 @@
 ## ~/.i3/config
-##
-## Please see http://i3wm.org/docs/userguide.html for a complete reference!
-##
-##
-## additionally, see `man i3` for info on using i3-2m
 
-## set modifier key to windows (meta) key
+## http://i3wm.org/docs/userguide.html for a complete reference!
+## additionally, see `man i3` for info
+
+## set modifier key to windows key
 set $mod Mod4
 
 ## set default font (you can set your own - make sure you install it first ;)
 ## ** Must install `ttf-dejavu` **
 font pango:DejaVu Sans Mono 10
-## *(weird side note: if you put a comment after the above line, it enlarges the font and messes it up)*
 
 ## set newly opened window styles
-## ** UNCOMMENT FOR NO TITLE BARS (my favorite) **
+## ** NO TITLE BARS (my favorite) **
 new_window pixel 2
 new_float pixel 2
 
 ## Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-## start a terminal  :) you will use this a lot (maybe)
+## start a terminal  :) you will use this a lot
 bindsym $mod+Return exec i3-sensible-terminal
 
 ## kill focused window
@@ -132,7 +129,7 @@ mode "resize" {
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
 
-        ## same bindings, but for the arrow keys
+        ## same bindings, but for the arrow keys (except more fine-tuned)
         bindsym Left resize shrink width 1 px or 1 ppt
         bindsym Down resize grow height 1 px or 1 ppt
         bindsym Up resize shrink height 1 px or 1 ppt
@@ -173,7 +170,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id synclient HorizTwoFingerScroll=1
 exec --no-startup-id synclient TapButton2=3
 exec --no-startup-id synclient Clickpad=2
-#exec --no-startup-id synclient PalmMinZ=0
 
 ## set Caps Lock to <esc> when pressed and control when held and used with another key
 ## ** BE SURE TO INSTALL `xcape` **
@@ -183,15 +179,17 @@ exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lo
 ## ** BE SURE TO INSTALL ALL compton AND PUT THE CONFIG IN ~/.configs/compton.conf **
 exec --no-startup-id compton -b
 
+## use unclutter to hide mouse when typing :) ##
+## BE SURE TO INSTALL `unclutter` ##
+exec --no-startup-id unclutter
+
 ## audio and brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 1 && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 1 && killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec --no-startup-id ponymix toggle && killall -SIGUSR1 i3status
-bindsym XF86MonBrightnessDown exec --no-startup-id  xbacklight -dec 1 #$HOME/bin/brightness_down.sh 50 #  # not working?
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 1 #$HOME/bin/brightness_up.sh 50 #  # not working?
+bindsym XF86MonBrightnessDown exec --no-startup-id  xbacklight -dec 1
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 1
 bindsym XF86Battery exec gnome-power-statistics
-## if above doesn't work, uncomment next line and see if that works
-#bindsym XF86AudioMute exec --no-startup-id pactl list sinks | grep -q Mute:.no && pactl set-sink-mute 1 1 || pactl set-sink-mute 1 0
 
 ## toggle touchpad capabilities
 bindsym $mod+m exec --no-startup-id $HOME/bin/toggletouchpad.sh
@@ -211,6 +209,7 @@ bindsym $mod+Shift+y exec --no-startup-id $HOME/bin/bg_shuf_dark_next
 # swap to next light background
 bindsym $mod+Shift+u exec --no-startup-id $HOME/bin/bg_shuf_light_next
 
+bindsym $mod+shift+s exec --no-startup-id $HOME/bin/toggleScreenkey.sh
 
 ## set some nice colors     (I worked quite hard on these :D)
 ##                          border          background      text
@@ -229,7 +228,7 @@ bar {
     status_command i3status
     position top
 
-## OLD COLORS (great ... but not solarized xD)
+## OLD COLORS
     colors {
         background          #2c2c2b
         statusline          #6692c4

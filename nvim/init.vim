@@ -74,7 +74,7 @@ let g:airline_powerline_fonts=1
 let g:airline_theme='badwolf'
 " inside window
 set cursorline
-set colorcolumn=91,121
+set colorcolumn=81,121
 set list
 set listchars=eol:¬,tab:»»,extends:>,trail:·
 " outside window
