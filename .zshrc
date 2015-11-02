@@ -22,6 +22,8 @@
 #     command nvim $*;
 # }
 
+source $HOME/.zlogin
+
 bindkey -v
 
 vimSloppyQuit(){

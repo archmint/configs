@@ -67,7 +67,7 @@ set hlsearch
 " pretty
 " colors
 syntax on
-if &term == "xterm" || &term == 'screen-256-color'
+if &term == "xterm" || &term == "screen-256-color"
     set t_Co=256
     set background=dark
     colorscheme monokai
