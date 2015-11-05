@@ -7,7 +7,7 @@ if has('vim_starting')
    scriptencoding utf-8
     set encoding=utf-8      " encoding => utf-8 (cannot run after startup)
 
-    set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " Only use these if using profile change is mapped to super+p and there only 2
@@ -16,7 +16,7 @@ autocmd VimLeave * :silent !xdotool key "super+p"
 "}}}
 
 " *neobundle* {{{
-call neobundle#begin(expand('~/.config/nvim/bundle/')) " required
+call neobundle#begin(expand('~/.vim/bundle/')) " required
 NeoBundle 'Shougo/neobundle.vim'                       " manage neobundle
 
 " Plugins that blend in
@@ -24,11 +24,11 @@ NeoBundle 'L9'                                         " some utility functions 
 
 NeoBundle 'Raimondi/delimitMate'                       " auto-closes quotes, parems, brackets, etc
 
-NeoBundle 'Valloric/YouCompleteMe'                     " autocompletion engines (must run python2 .../YouCompleteMe/install.py)
+" NeoBundle 'Valloric/YouCompleteMe'                     " autocompletion engines (must run python2 .../YouCompleteMe/install.py)
 
 NeoBundle 'airblade/vim-gitgutter'                     " display git diff in gutter
 
-" NeoBundle 'ervandew/supertab'                         " similar-word completion (YCM wins)
+NeoBundle 'ervandew/supertab'                          " similar-word completion
 
 NeoBundle 'gioele/vim-autoswap'                        " automatically manages swaps files
 let g:autoswap_detect_tmux = 1                         " let vim autoswap in tmux (uses vim-autoswap) ** requires swap files **
@@ -37,7 +37,6 @@ NeoBundle 'gorodinskiy/vim-coloresque'                 " see 256 colors in termi
 
 NeoBundle 'luochen1990/rainbow'                        " make different parentheses layers different colors
 let g:rainbow_active = 1                               " activate rainbow parens
-
 NeoBundle 'scrooloose/syntastic'                       " awesome syntax checker
 
 NeoBundle 'sickill/vim-pasta'                          " awesome auto-pasting
@@ -129,7 +128,7 @@ set splitright                                  " vertical splits open to the ri
 "set noswapfile
 "set nobackup
 "set nowb
-set undodir=~/.local/share/nvim/backup
+set undodir=~/.vim/undo
 set undofile
 "}}}
 
