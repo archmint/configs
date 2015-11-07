@@ -3,7 +3,7 @@
 #     xcape -e 'Caps_Lock=Escape'
 # fi
 
-export PATH="$HOME/bin/:$PATH"
+export PATH="$HOME/scripts/:$PATH"
 export EDITOR=vim
 export TERMINAL=terminator
 

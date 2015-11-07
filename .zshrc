@@ -18,34 +18,24 @@
 # (espeak 'Welcome'&) > /dev/null
 
 # vim(){
-#     (espeak 'nvim'&)  > /dev/null;
-#     command nvim $*;
+#     (espeak 'vim'&)  > /dev/null;
+#     command vim $*;
 # }
 
-source $HOME/.zlogin
+source $HOME/.profile
 
 bindkey -v
 
-vimSloppyQuit(){
-    exit
-}
-
+#
+## quick aliases
 alias tm='tmux -2'
-
-alias q=vimSloppyQuit # takes care of ;q
-alias :q=vimSloppyQuit
-alias wq=vimSloppyQuit # takes care of ;wq
-alias :wq=vimSloppyQuit
-
-alias vi='nvim'
-
-#alias android='~/android-studio/bin/studio.sh &'
-alias vz='nvim ~/.zshrc && source ~/.zshrc'
-alias vv='if [ -f ~/.vimrc ]; then VIMRC=~/.vimrc; else VIMRC=~/.vim/vimrc; fi; nvim $VIMRC'
-alias vnv='nvim ~/.config/nvim/init.vim'
-alias vt='nvim ~/.tmux.conf'
-alias vi3='nvim ~/.i3/config'
-alias vi3s='nvim ~/.i3status.conf +31'
+alias vb='vim ~/.bashrc; source ~/.bashrc;'
+alias vz='vim ~/.zshrc; source ~/.zshrc'
+alias vv='vim ~/.vimrc;'
+alias vnv='vim ~/.config/nvim/init.vim'
+alias vt='vim ~/.tmux.conf'
+alias vi3='vim ~/.i3/config'
+alias vi3s='vim ~/.i3status.conf'
 
 ## Inform users about upgrade path for grml's old zshrc layout, assuming that:
 ## /etc/skel/.zshrc was installed as ~/.zshrc,

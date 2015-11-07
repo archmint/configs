@@ -1,1 +1,13 @@
-nvim/bundle/
+.vim/bundle/*
+.vim/.bundle/*
+.vim/doc/*
+.vim/.netrwhist
+.vim/undo/*
+.vim/.VimballRecord
+
+nvim/bundle/*
+nvim/doc/*
+nvim/.netrwhist
+nvim/syntax/*
+nvim/undo/*
+nvim/.VimballRecord

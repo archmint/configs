@@ -3,18 +3,6 @@
 ## If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-
-## Make Caps lock useful
-### CAPS tap: <esc>
-### CAPS hold: <C>
-#if ! [ "$DISPLAY" = "" ]; then
-#    setxkbmap -option 'caps:ctrl_modifier'
-#    xcape -e 'Caps_Lock=Escape'
-#fi
-
-
-alias android='(~/android-studio/bin/studio.sh &)'
-
 ## ls options
 alias ls='ls --color=auto --file-type'
 alias la='ls -AF'
@@ -23,15 +11,28 @@ alias ll='ls -lAF'
 #alias cla='clear; la'
 #alias cll='clear; ll'
 
-## grep options -- CAN'T USE THESE because bash autocompletions get screwed up
+
+## grep options
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias vb='vim ~/.bashrc && source ~/.bashrc'
-alias vv='vim ~/.vimrc'
+## quick aliases
+alias tm='tmux -2'
+alias vb='vim ~/.bashrc; source ~/.bashrc;'
+alias vz='vim ~/.zshrc; source ~/.zshrc'
+alias vv='vim ~/.vim/vimrc;'
+alias vnv='vim ~/.config/nvim/init.vim'
+alias vt='vim ~/.tmux.conf'
+alias vi3='vim ~/.i3/config'
+alias vi3s='vim ~/.i3status.conf'
 
-## term initializations
+
+## hard screen clear
+bind -x '"\C-t": printf "\ec"'
+
+
+## PS1
 if [ "$TERM" = "xterm" ] || [ "$TERM" = "screen-256color" ] || [ "$TERM" = "screen" ]; then
 #    PS1="\[\e[0;1;34m\][$(date +%R)] \[\e[00;36m\]${debian_chroot:+($debian_chroot)}\u@\h\[\e[01;34m\]:\w\[\e[00m\] \$ "
 #    PS1="\[\e[0;1;31;40m\]\t \[\e[0;30;47m\]\[\e[37;44m\]\[\e[1;37m\] ${debian_chroot:+($debian_chroot)}\u@\h \[\e[0;34;47m\]\[\e[37;40m\]\[\e[1;32m\] \w \[\e[0;30;49m\]\[\e[00m\] "
@@ -39,20 +40,8 @@ if [ "$TERM" = "xterm" ] || [ "$TERM" = "screen-256color" ] || [ "$TERM" = "scre
 else
 #    PS1="\[\e[0;1;36m\][\$(date +%R)] \[\e[00;01;32m\]${debian_chroot:+($debian_chroot)}\u@\h\[\e[01;36m\]:\w\[\e[01;32m\] \$ "
 #    PS1="\[\e[0;1;33;44m\][\t] \[\e[0;34;46m\]>\[\e[1;37m\] ${debian_chroot:+($debian_chroot)}\u@\h:\w \[\e[0;36;49m\]>\[\e[00m\] "
-    PS1="\[\e[0m\]\e[K\n\[\e[1;31;44m\]/\[\e[1;37m\]\t \[\e[0;34;48m\]>\e[K\n\[\e[1;31;44m\]\\ \[\e[1;37;44m\]${debian_chroot:+($debian_chroot)}\u@\h \[\e[0;34;47m\]>\[\e[37;40m\]>\[\e[1;32m\] \w \[\e[0;30;49m\]>\[\e[00m\] "
+    PS1="\[\e[0m\]\e[K\n\[\e[1;31;44m\]| \[\e[1;37m\]\t \[\e[31m\]>\[\e[0;34;48m\]\e[K\n\[\e[1;31;44m\]| \[\e[1;37;44m\]${debian_chroot:+($debian_chroot)}\u@\h \[\e[31m\]>\[\e[0;1;32m\] \w \[\e[31m\]>\[\e[00m\] "
 fi
-
-## hard screen clear
-bind -x '"\C-t": printf "\ec"'
-
-## brightness in terminal  (for the most part, you don't need these)
-#bind -x '"\C-k": brightness_up.sh'
-#bind -x '"\C-j": brightness_down.sh'
-#bind -x '"\C-l": brightness_set.sh'
-#bind -x '"\C-h": brightness_set.sh 0'
-
-## uncomment the next line if not using solarized built-in colorscheme (in terminator, for example)
-#eval `dircolors ~/git/dircolors-solarized/dircolors.ansi-light'
 
 ## for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -64,26 +53,6 @@ shopt -s histappend
 ## make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-## alerts
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias emergency='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-## android - move android-studio to home before setup and uncomment next line
-#alias android='(~/android-studio/bin/studio.sh &> /dev/null &)'
-
-## float division
-float() {
-    ## This will print (first arg)/(second arg) up to (third arg) decimal places
-    if [ ! $3 ]; then # no third arg
-        places=0;
-    else
-        places=$3;
-    fi
-    if [ ! $2 ]; then
-        printf "\e[31;1mMust pass at least two numbers to divide\e[0m\n";
-    fi
-    echo `awk "BEGIN {printf \"%.${places}f\", ${1}/${2}}"`
-}
 
 ## fun/crazy things
 pwdzip() {

@@ -4,5 +4,4 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export PATH="$HOME/bin/:$PATH"
-export EDITOR=vim
+source $HOME/.profile
