@@ -1,4 +1,4 @@
-# configs
+# configs and more
 --
 
 ## Within this repository are configuration files for the following ##
