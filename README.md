@@ -58,7 +58,7 @@
 ## Usages ##
 - .backgrounds/
     * These are simply all of the backgrounds I like - right almost every one relates to arch
-- /.bashrc
+- .bashrc
   * The bashrc file can be used for any terminal device - such as a native terminal or a terminal emulator - that is running a bash (or even an sh) shell. For more information, you can read the bash manual (`man bash` or https://www.gnu.org/software/bash/manual/bash.html)
 - compton.conf
     * configuration for compton that allows for smooth transitions and a simply a nicer look
