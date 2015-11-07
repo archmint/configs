@@ -1,4 +1,4 @@
-# configs
+# configs and more
 --
 
 ## Within this repository are configuration files for the following ##
@@ -21,23 +21,39 @@
 - terminator-configs/  - lots of terminator schemes and color schemes
 
 ## Places to put the configs ##
-- .backgrounds/        - `ln -s` to "$HOME/.backgrounds/"
-- .bashrc              - `ln -s` to "$HOME/.bashrc"
-- compton.conf         - `ln -s` to "$HOME/.config/compton.conf"
-- .i3status.conf       - `ln -s` to "$HOME/.i3status.conf"
-- .bash_profile        - `ln -s` to "$HOME/.bash_profile"
-- .i3/                 - `ln -s` to "$HOME/.i3/"
-- .idlerc/             - `ln -s` to "$HOME/.idlerc/"
-- .keymap_caps2esc     - N/A
-- .profile             - `ln -s` to "$HOME/.profile"
-- .tmux.conf           - `ln -s` to "$HOME/.tmux.conf"
-- .vim/                - `ln -s` to "$HOME/.vim"
-- .vimrc               - `ln -s` to "$HOME/.vimrc"
-- .zshrc               - `ln -s` to "$HOME/.zshrc"
-- nvim/                - `ln -s` to "$HOME/.config/nvim/"
-- scripts/             - `ln -s` to "$HOME/scripts"
-- terminator/          - `ln -s` to "$HOME/.config/terminator"
-- terminator-configs/  - N/A
+- .backgrounds/
+    * `ln -s` to "$HOME/.backgrounds/"
+- .bashrc
+    * `ln -s` to "$HOME/.bashrc"
+- compton.conf
+    * `ln -s` to "$HOME/.config/compton.conf"
+- .i3status.conf
+    * `ln -s` to "$HOME/.i3status.conf"
+- .bash_profile
+    * `ln -s` to "$HOME/.bash_profile"
+- .i3/
+    * `ln -s` to "$HOME/.i3/"
+- .idlerc/
+    * `ln -s` to "$HOME/.idlerc/"
+- .keymap_caps2esc
+    * N/A
+- .profile
+    * `ln -s` to "$HOME/.profile"
+- .tmux.conf
+    * `ln -s` to "$HOME/.tmux.conf"
+- .vim/
+    * `ln -s` to "$HOME/.vim"
+- .vimrc
+    * `ln -s` to "$HOME/.vimrc"
+- .zshrc
+    * `ln -s` to "$HOME/.zshrc"
+- nvim/
+    * `ln -s` to "$HOME/.config/nvim/"
+- scripts/
+    * `ln -s` to "$HOME/scripts"
+- terminator/
+    * `ln -s` to "$HOME/.config/terminator"
+- terminator-configs/  N/A
 
 ## Usages ##
 - .backgrounds/
