@@ -23,7 +23,7 @@ stty -ctlecho
 
 ## Key Bindings
 # tab
-bind 'set show-all-if-ambiguous on'
+# bind 'set show-all-if-ambiguous on'
 bind '"\C-i" menu-complete'
 
 # hard screen clear

@@ -161,8 +161,6 @@ bindsym $mod+x exec --no-startup-id xset r rate 150 25
 ## ** FOR THIS BG INSTALL `gnome-backgrounds` as well as feh; then run `feh --bg-fill /path/to/img.png`, for example **
 exec --no-startup-id $HOME/.fehbg
 
-#exec --no-startup-id (while :; sleep $(cat ~/.bg_shuf/.time); do $HOME/scripts/bg_shuf_dark; done &)
-
 ## use the next single-commented line if you have nm-applet to control wifi)
 ## ** YOU COULD INSTALL `nm-applet` OR `konnman` OR ANOTHER NETWORK CONFIGURATIONS MANAGER **
 ## ** OR YOU COULD JUST RUN `wifi-menu` (like me :P) **
@@ -216,10 +214,10 @@ bindsym $mod+y exec --no-startup-id $HOME/scripts/bg_next_dark
 bindsym $mod+u exec --no-startup-id $HOME/scripts/bg_next_light
 
 # swap to previous dark background
-bindsym $mod+Shift+y exec --no-startup-id $HOME/scripts/bg_prev_dark_next
+bindsym $mod+Shift+y exec --no-startup-id $HOME/scripts/bg_prev_dark
 
 # swap to previous light background
-bindsym $mod+Shift+u exec --no-startup-id $HOME/scripts/bg_prev_light_next
+bindsym $mod+Shift+u exec --no-startup-id $HOME/scripts/bg_prev_light
 
 bindsym $mod+shift+s exec --no-startup-id $HOME/scripts/toggleScreenkey.sh
 
