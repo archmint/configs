@@ -1,6 +1,3 @@
-" ~/.vimrc
-" vim: foldmethod=marker
-
 " *start* {{{
 if has('vim_starting')
     if &compatible
@@ -12,6 +9,10 @@ if has('vim_starting')
 
     set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
 endif
+
+" Only use these if using profile change is mapped to super+p and there only 2
+autocmd VimEnter * :silent !xdotool key "super+p"
+autocmd VimLeave * :silent !xdotool key "super+p"
 "}}}
 
 " *neobundle* {{{
@@ -69,14 +70,15 @@ NeoBundle 'vim-scripts/align'                          " align something on a ch
 " Colorschemes and fun :)
 NeoBundle 'altercation/vim-colors-solarized'           " awesome solarized colors (make sure you have solarized palette)
 
-NeoBundleFetch 'edkolev/tmuxline.vim'                  " good for generating nice tmuxline (don't import unless you are configuring tmuxline)
-
 NeoBundle 'morhetz/gruvbox'                            " nice dark colorscheme
+
+NeoBundle 'tomasr/molokai'
 
 NeoBundle 'vim-scripts/TeTrIs.vim'                     " play tetris with <leader>te
 
 NeoBundle 'vim-scripts/xoria256.vim'                   " nice dark colorscheme
 
+NeoBundleFetch 'edkolev/tmuxline.vim'                  " good for generating nice tmuxline (don't import unless you are configuring tmuxline)
 call neobundle#end()                                   " required
 filetype plugin indent on                              " required
 NeoBundleCheck                                         " If there are uninstalled bundles found on startup,
@@ -87,9 +89,11 @@ syntax enable
 set background=dark                             " dark background!
 if exists("$DISPLAY") " in X11
     set t_Co=256
-    colorscheme monokai
+    " colorscheme monokai
+    colorscheme solarized
     let airline_powerline_fonts=1
-    let airline_theme='badwolf'
+    " let airline_theme='badwolf'
+    let airline_theme='raven'
 else
     set t_Co=8
     colorscheme zellner
@@ -205,3 +209,5 @@ inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 "}}}
+
+" vim: foldmethod=marker
