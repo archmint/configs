@@ -51,7 +51,7 @@ alias vi3='vim ~/.i3/config'
 alias vi3s='vim ~/.i3status.conf'
 
 
-## PS1 -- grml
+## battery dir
 _PS1_bat_dir="$( if [ -d /sys/class/power_supply/BAT0 ]; then printf 'BAT0'; else printf 'BAT1'; fi; )"
 
 _PS1_ret(){
@@ -59,24 +59,26 @@ _PS1_ret(){
     RET=$?;
 
     # battery
-    if [ -d /sys/class/power_supply/$_PS1_bat_dir ]; then
-        # linux
-        CHARGING="$( cat /sys/class/power_supply/$_PS1_bat_dir/status )";
-        if [ "$CHARGING" = "Discharging" ]; then
-            bat=$(printf " v%d%%" "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
-        elif [ "$CHARGING" = "Charging" ]; then
-            bat=$(printf " ^%d%%" "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
-        elif [ "$CHARGING" = "Unknown" ] && [ "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)" -gt 98 ]; then
-            bat=$(printf " =%d%%" "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
-        else
-            bat=" no bat";
-        fi;
+    if [[ "$GRML_DISPLAY_BATTERY" == "1" ]]; then
+        if [ -d /sys/class/power_supply/$_PS1_bat_dir ]; then
+            # linux
+            STATUS="$( cat /sys/class/power_supply/$_PS1_bat_dir/status )";
+            if [ "$STATUS" = "Discharging" ]; then
+                bat=$(printf ' v%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+            elif [ "$STATUS" = "Charging" ]; then
+                bat=$(printf ' ^%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+            elif [ "$STATUS" = "Full" ] || [ "$STATUS" = "Unknown" ] && [ "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)" -gt "98" ]; then
+                bat=$(printf ' =%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+            else
+                bat=$(printf ' ?%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+            fi;
+        fi
     fi
 
     if [[ "$RET" -ne "0" ]]; then
-        printf '\001%*s\002%s\r\001%s\002%s\001%s\002 ' "$(tput cols)" ":( $bat " "[0;31;1m" "$RET"
+        printf '\001%*s%s\r%s\002%s ' "$(tput cols)" ":( $bat " "[0;31;1m" "$RET"
     else
-        printf '\001%*s\002%s\r' "$(tput cols)" "$bat "
+        printf '\001%*s%s\r\002' "$(tput cols)" "$bat "
     fi;
 }
 
@@ -95,7 +97,8 @@ _PS1_git(){
 }
 
 # grml PS1
-PS1="\[\e[0m\]\$(_PS1_ret)\[\e[34;1m\]${debian_chroot:+($debian_chroot)}\u\[\e[0m\]@\h\[\e[01m\] \w\[\e[00m\]\$(_PS1_git) % "
+PS1="\[\e[0m\]\$(_PS1_ret)\[\e[34;1m\]${debian_chroot:+($debian_chroot)}\u\[\e[0m\]@\h \[\e[01m\]\w\$(_PS1_git) \[\e[0m\]% "
 
+# my weirdo fancy schmancy PS1
 # PS1="\[\e[0m\]\e[K\e[31m\${?##0}\n\[\e[1;31;44m\]┌\[\e[1;37m\] \t \[\e[0;34;48m\]\e[K\n\[\e[1;31;44m\]└\[\e[1;37;44m\] ${debian_chroot:+($debian_chroot)}\u@\h \[\e[0;34;47m\]\[\e[37;40m\]\[\e[1;32m\] \w \[\e[0;30;49m\]\[\e[00m\] "
 
