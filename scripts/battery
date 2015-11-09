@@ -1,0 +1,19 @@
+#!/bin/sh
+
+## battery dir
+_PS1_bat_dir="$( if [ -d /sys/class/power_supply/BAT0 ]; then printf 'BAT0'; else printf 'BAT1'; fi; )"
+
+if [ -d /sys/class/power_supply/$_PS1_bat_dir ]; then
+    # linux
+    STATUS="$( cat /sys/class/power_supply/$_PS1_bat_dir/status )";
+    if [ "$STATUS" = "Discharging" ]; then
+        bat=$(printf ' v%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+    elif [ "$STATUS" = "Charging" ]; then
+        bat=$(printf ' ^%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+    elif [ "$STATUS" = "Full" ] || [ "$STATUS" = "Unknown" ] && [ "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)" -gt "98" ]; then
+        bat=$(printf ' =%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+    else
+        bat=$(printf ' ?%d%%' "$(cat /sys/class/power_supply/$_PS1_bat_dir/capacity)");
+    fi;
+    printf '%s' "$bat"
+fi
