@@ -27,7 +27,10 @@ bindsym $mod+q kill
 ## start dmenu  (a program launcher... quite useful... how you open anything in i3)
 ## ** YOU MUST INSTALL `dmenu` FOR THIS TO WORK **m
 bindsym $mod+d exec dmenu_run
-## side note: sometimes `dmenu` comes with `suckless-tools`, but many times this partial package is supported OR it is its own package
+
+## bind print key to screenshot key (do `xmodmap -pce > ~/.Xmodmap` for key map)
+## ** MUST HAVE `scrot` INSTALLED **
+bindcode 107 exec scrot -ze 'mkdir -p ~/Pictures/screenshots/ && mv $f ~/Pictures/screenshots/'
 
 ## change focus  (vim-like)
 bindsym $mod+h focus left
@@ -171,6 +174,9 @@ exec --no-startup-id synclient HorizTwoFingerScroll=1
 exec --no-startup-id synclient TapButton2=3
 exec --no-startup-id synclient Clickpad=2
 
+## natural scrolling?
+exec --no-startup-id xmodmap -e 'pointer = 1 2 3 5 4 7 6 8 9 10 11 12'
+
 ## set Caps Lock to <esc> when pressed and control when held and used with another key
 ## ** BE SURE TO INSTALL `xcape` **
 exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
@@ -186,7 +192,10 @@ exec --no-startup-id unclutter
 ## audio and brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 1 && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 1 && killall -SIGUSR1 i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 1 && killall -SIGUSR1 i3blocks
+# bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 1 && killall -SIGUSR1 i3blocks
 bindsym XF86AudioMute exec --no-startup-id ponymix toggle && killall -SIGUSR1 i3status
+# bindsym XF86AudioMute exec --no-startup-id ponymix toggle && killall -SIGUSR1 i3blocks
 bindsym XF86MonBrightnessDown exec --no-startup-id  xbacklight -dec 1
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 1
 bindsym XF86Battery exec gnome-power-statistics
@@ -197,56 +206,82 @@ bindsym $mod+m exec --no-startup-id $HOME/scripts/toggletouchpad.sh
 # bar toggle, hide or show
 bindsym $mod+b bar mode toggle
 
-# swap to random dark background
-bindsym $mod+y exec --no-startup-id $HOME/scripts/bg_shuf_dark
-
-# swap to random light background
-bindsym $mod+u exec --no-startup-id $HOME/scripts/bg_shuf_light
-
 # swap to next dark background
-bindsym $mod+Shift+y exec --no-startup-id $HOME/scripts/bg_shuf_dark_next
+bindsym $mod+y exec --no-startup-id $HOME/scripts/bg_next_dark
 
 # swap to next light background
-bindsym $mod+Shift+u exec --no-startup-id $HOME/scripts/bg_shuf_light_next
+bindsym $mod+u exec --no-startup-id $HOME/scripts/bg_next_light
+
+# swap to previous dark background
+bindsym $mod+Shift+y exec --no-startup-id $HOME/scripts/bg_prev_dark_next
+
+# swap to previous light background
+bindsym $mod+Shift+u exec --no-startup-id $HOME/scripts/bg_prev_light_next
 
 bindsym $mod+shift+s exec --no-startup-id $HOME/scripts/toggleScreenkey.sh
 
-## set some nice colors     (I worked quite hard on these :D)
-##                          border          background      text
-client.focused              #202020         #ec4431         #ec4431         #dd6d62
-client.unfocused            #2c2c2b         #4d4d4d         #8faf9f         #dd6d62
-client.focused_inactive     #2c2c2b         #4d4d4d         #8faf9f         #dd6d62
-client.urgent               #e89393         #e89393         #ec4431
 
 ## ** ONLY USE THE BELOW LINES WITH i3-gaps **
 gaps inner 10
 gaps outer 0
 
-## the status bar
-## ** MUST INSTALL `i3menu` FOR THIS TO WORK **
-bar {
-    status_command i3status
-    position top
 
-## OLD COLORS
-    colors {
-        background          #2c2c2b
-        statusline          #6692c4
-        separator           #efef8f
-        focused_workspace   #ec4431         #ec4431         #202020
-        active_workspace    #88b090         #202020         #ec4431
-        inactive_workspace  #2c2c2b         #2c2c2b         #ec4431
-        urgent_workspace    #ec4431         #2c2c2b         #ec4431
-    }
+# RED MOON (my) COLORS
+# ###################         border          background      text
+# client.focused              #202020         #ec4431         #ec4431         #dd6d62
+# client.unfocused            #2c2c2b         #4d4d4d         #8faf9f         #dd6d62
+# client.focused_inactive     #2c2c2b         #4d4d4d         #8faf9f         #dd6d62
+# client.urgent               #e89393         #e89393         #ec4431
+#
+# bar {
+#     status_command i3status
+#     position top
+#
+#     colors {
+#         background          #2c2c2b
+#         statusline          #6692c4
+#         separator           #efef8f
+#         focused_workspace   #ec4431         #ec4431         #202020
+#         active_workspace    #88b090         #202020         #ec4431
+#         inactive_workspace  #2c2c2b         #2c2c2b         #ec4431
+#         urgent_workspace    #ec4431         #2c2c2b         #ec4431
+#     }
+# }
+
 
 ## SOLARIZED COLORS
-#    colors {
-#        background          #002b36
-#        statusline          #93a1a1
-#        focused_workspace   #dc322f         #dc322f         #586e75
-#        active_workspace    #88b090         #202020         #ec4431
-#        inactive_workspace  #2c2c2b         #2c2c2b         #ec4431
-#        urgent_workspace    #ec4431         #2c2c2b         #ec4431
-#    }
-}
+###################         border          background      text
+client.focused              #dc322f         #dc322f         #ec4431         #dd6d62
+client.unfocused            #002A38         #002A38         #8faf9f         #dd6d62
+client.focused_inactive     #002A38         #002A38         #8faf9f         #dd6d62
+client.urgent               #e89393         #e89393         #ec4431
 
+## the status bar
+## ** MUST INSTALL `i3status` FOR THIS TO WORK **
+# bar {
+#     status_command i3status
+#     position top
+#
+#    colors {
+#        background          #002A38
+#        statusline          #93a1a1
+#        focused_workspace   #657b83         #657b83         #fdf6e3
+#        active_workspace    #88b090         #002A38         #ec4431
+#        inactive_workspace  #002A38         #002A38         #657b83
+#        urgent_workspace    #dc322f         #003A38         #ec4431
+#    }
+# }
+
+bar {
+    status_command i3blocks
+    position top
+
+    colors {
+        background          #002A38
+            statusline          #93a1a1
+            focused_workspace   #657b83         #657b83         #fdf6e3
+            active_workspace    #88b090         #002A38         #ec4431
+            inactive_workspace  #002A38         #002A38         #657b83
+            urgent_workspace    #dc322f         #003A38         #ec4431
+    }
+}
