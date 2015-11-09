@@ -192,10 +192,13 @@ exec --no-startup-id unclutter
 ## audio and brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 1 && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 1 && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id ponymix toggle && killall -SIGUSR1 i3status
+
+## i3blocks
 # bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 1 && killall -SIGUSR1 i3blocks
 # bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 1 && killall -SIGUSR1 i3blocks
-bindsym XF86AudioMute exec --no-startup-id ponymix toggle && killall -SIGUSR1 i3status
 # bindsym XF86AudioMute exec --no-startup-id ponymix toggle && killall -SIGUSR1 i3blocks
+
 bindsym XF86MonBrightnessDown exec --no-startup-id  xbacklight -dec 1
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 1
 bindsym XF86Battery exec gnome-power-statistics
@@ -258,30 +261,32 @@ client.urgent               #e89393         #e89393         #ec4431
 
 ## the status bar
 ## ** MUST INSTALL `i3status` FOR THIS TO WORK **
-# bar {
-#     status_command i3status
-#     position top
-#
-#    colors {
-#        background          #002A38
-#        statusline          #93a1a1
-#        focused_workspace   #657b83         #657b83         #fdf6e3
-#        active_workspace    #88b090         #002A38         #ec4431
-#        inactive_workspace  #002A38         #002A38         #657b83
-#        urgent_workspace    #dc322f         #003A38         #ec4431
-#    }
-# }
-
 bar {
-    status_command i3blocks
+    status_command i3status
     position top
 
-    colors {
-        background          #002A38
-            statusline          #93a1a1
-            focused_workspace   #657b83         #657b83         #fdf6e3
-            active_workspace    #88b090         #002A38         #ec4431
-            inactive_workspace  #002A38         #002A38         #657b83
-            urgent_workspace    #dc322f         #003A38         #ec4431
-    }
+   colors {
+       background          #002A38
+       statusline          #93a1a1
+       focused_workspace   #657b83         #657b83         #fdf6e3
+       active_workspace    #88b090         #002A38         #ec4431
+       inactive_workspace  #002A38         #002A38         #657b83
+       urgent_workspace    #dc322f         #003A38         #ec4431
+   }
 }
+
+## i3blocks bar
+## ** MUST INSTALL `i3blocks` FOR THIS TO WORK **
+# bar {
+#     status_command i3blocks
+#     position top
+#
+#     colors {
+#         background          #002A38
+#             statusline          #93a1a1
+#             focused_workspace   #657b83         #657b83         #fdf6e3
+#             active_workspace    #88b090         #002A38         #ec4431
+#             inactive_workspace  #002A38         #002A38         #657b83
+#             urgent_workspace    #dc322f         #003A38         #ec4431
+#     }
+# }
