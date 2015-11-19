@@ -4,15 +4,11 @@ if has('vim_starting')
         set nocompatible    " do not maintatin compatibility with vi
     endif
 
-   scriptencoding utf-8
+    scriptencoding utf-8
     set encoding=utf-8      " encoding => utf-8 (cannot run after startup)
 
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-
-" Only use these if using profile change is mapped to super+p and there only 2
-autocmd VimEnter * :silent !xdotool key "super+p"
-autocmd VimLeave * :silent !xdotool key "super+p"
 "}}}
 
 " *neobundle* {{{
@@ -24,11 +20,11 @@ NeoBundle 'L9'                                         " some utility functions 
 
 NeoBundle 'Raimondi/delimitMate'                       " auto-closes quotes, parems, brackets, etc
 
-" NeoBundle 'Valloric/YouCompleteMe'                     " autocompletion engines (must run python2 .../YouCompleteMe/install.py)
+NeoBundle 'Valloric/YouCompleteMe'                     " autocompletion engines (must run python2 .../YouCompleteMe/install.py)
 
 NeoBundle 'airblade/vim-gitgutter'                     " display git diff in gutter
 
-NeoBundle 'ervandew/supertab'                          " similar-word completion
+" NeoBundle 'ervandew/supertab'                          " similar-word completion
 
 NeoBundle 'gioele/vim-autoswap'                        " automatically manages swaps files
 let g:autoswap_detect_tmux = 1                         " let vim autoswap in tmux (uses vim-autoswap) ** requires swap files **
@@ -71,7 +67,13 @@ NeoBundle 'altercation/vim-colors-solarized'           " awesome solarized color
 
 NeoBundle 'morhetz/gruvbox'                            " nice dark colorscheme
 
+NeoBundle 'guardian'                                   " light colorsheme
+
+NeoBundle 'nanotech/jellybeans.vim'                    " nice very dark colorscheme
+
 NeoBundle 'tomasr/molokai'
+
+NeoBundle 'crusoexia/vim-monokai'                     " nice medium dark colorscheme (my fav)
 
 NeoBundle 'vim-scripts/TeTrIs.vim'                     " play tetris with <leader>te
 
@@ -89,10 +91,12 @@ set background=dark                             " dark background!
 if exists("$DISPLAY") " in X11
     set t_Co=256
     " colorscheme monokai
-    colorscheme solarized
+    " colorscheme solarized
+    colorscheme jellybeans
     let airline_powerline_fonts=1
     " let airline_theme='badwolf'
-    let airline_theme='raven'
+    " let airline_theme='raven'
+    let airline_theme='jellybeans'
 else
     set t_Co=8
     colorscheme zellner
@@ -119,7 +123,7 @@ set novisualbell                                " no flashing
 set noerrorbells                                " no noise
 set vb t_vb=                                    " disable any beeps or flashes on error
 
-set splitbelow                                  " horizontal splits open below
+set nosplitbelow                                " horizontal splits open above (default)
 set splitright                                  " vertical splits open to the right"
 " }}}
 
