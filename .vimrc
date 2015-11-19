@@ -181,7 +181,7 @@ set fo-=o               " don't automatically insert comment after newline on co
 
 " *leader configuration for visual preferences* {{{
 " toggle background from light to dark
-nnoremap <silent> <leader>b :let &background=(&background == "light" ? "dark" : "light")<cr>:silent AirlineRefresh<cr>:<cr>
+nnoremap <silent> <leader>bg :let &background=(&background == "light" ? "dark" : "light")<cr>:silent AirlineRefresh<cr>:<cr>
 
 " toggle showing invisibles
 nnoremap <silent> <leader>l :set list!<cr>
@@ -190,7 +190,7 @@ nnoremap <silent> <leader>l :set list!<cr>
 nnoremap <silent> <leader>r :set relativenumber!<cr>:<cr>
 
 " list buffers and pre-type ':buffer ' for you
-nnoremap <leader>b :buffers<cr>:buffer<space>
+nnoremap <leader>bf :buffers<cr>:buffer<space>
 
 " fun colorschemes
 nnoremap <silent> <leader>[l :echo "backgrounds: gruvbox (g), jellybeans (j), monokai (m), solarized (s), xoria256 (x)"<cr>
