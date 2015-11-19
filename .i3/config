@@ -154,6 +154,9 @@ exec --no-startup-id xset r rate 150 25
 ## ** comment above and uncomment below for more moderate key repeat speed **
 #exec --no-startup-id xset r rate 420 50
 
+## if your resolution is crap ... play around with this in zsh
+#exec --no-startup-id xrandr --output Virtual-0 --primary --mode 1440x900
+
 ## reset key repeat speed with $mod+x
 bindsym $mod+x exec --no-startup-id xset r rate 150 25
 
@@ -177,7 +180,10 @@ exec --no-startup-id xmodmap -e 'pointer = 1 2 3 5 4 7 6 8 9 10 11 12'
 
 ## set Caps Lock to <esc> when pressed and control when held and used with another key
 ## ** BE SURE TO INSTALL `xcape` **
-exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
+exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+## tapping Control (note: Caps is remapped to Control in line above) will trigger Escape
+exec --no-startup-id xcape -e 'Caps_Lock=Escape'
+exec --no-startup-id xcape -e 'Control_L=Escape'
 
 ## use compton for tear-free graphics
 ## ** BE SURE TO INSTALL ALL compton AND PUT THE CONFIG IN ~/.configs/compton.conf **
