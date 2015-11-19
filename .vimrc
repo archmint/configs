@@ -189,6 +189,9 @@ nnoremap <silent> <leader>l :set list!<cr>
 " toggle relative numbers
 nnoremap <silent> <leader>r :set relativenumber!<cr>:<cr>
 
+" list buffers and pre-type ':buffer ' for you
+nnoremap <leader>b :buffers<cr>:buffer<space>
+
 " fun colorschemes
 nnoremap <silent> <leader>[l :echo "backgrounds: gruvbox (g), jellybeans (j), monokai (m), solarized (s), xoria256 (x)"<cr>
 nnoremap <silent> <leader>[g :set background=dark<cr>:colorscheme gruvbox<cr>:AirlineRefresh<cr>
