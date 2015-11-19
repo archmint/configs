@@ -41,15 +41,16 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# quick aliases
+## quick aliases
+
 alias tm='tmux -2'
-alias vb='vim ~/.bashrc; source ~/.bashrc;'
-alias vz='vim ~/.zshrc; source ~/.zshrc'
-alias vv='vim ~/.vimrc;'
-alias vnv='vim ~/.config/nvim/init.vim'
-alias vt='vim ~/.tmux.conf'
-alias vi3='vim ~/.i3/config'
-alias vi3s='vim ~/.i3status.conf'
+alias vb='f=$(readlink -f $HOME/.bashrc); cd $(dirname $f); vim $f; cd - > /dev/null; if [ "$(echo $BASH_VERSION)" ]; then source $HOME/.bashrc; fi'
+alias vz='f=$(readlink -f $HOME/.zshrc); cd $(dirname $f); vim $f; cd - > /dev/null; if [ "$(echo $ZSH_VERSION)" ]; then source $HOME/.zshrc; fi'
+alias vv='f=$(readlink -f $HOME/.vimrc); cd $(dirname $f); vim $f; cd - > /dev/null'
+alias vnv='f=$(readlink -f $HOME/.config/nvim/init.vim); cd $(dirname $f); vim $f; cd - > /dev/null'
+alias vt='f=$(readlink -f $HOME/.tmux.conf); cd $(dirname $f); vim $f; cd - > /dev/null'
+alias vi3='f=$(readlink -f $HOME/.i3/conf); cd $(dirname $f); vim $f; cd - > /dev/null'
+alias vi3s='f=$(readlink -f $HOME/.i3status.conf); cd $(dirname $f); vim $f; cd - > /dev/null'
 
 
 ## Colors

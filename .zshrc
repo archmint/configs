@@ -26,16 +26,15 @@ source $HOME/.profile
 
 bindkey -v
 
-#
 ## quick aliases
 alias tm='tmux -2'
-alias vb='vim ~/.bashrc; source ~/.bashrc;'
-alias vz='vim ~/.zshrc; source ~/.zshrc'
-alias vv='vim ~/.vimrc;'
-alias vnv='vim ~/.config/nvim/init.vim'
-alias vt='vim ~/.tmux.conf'
-alias vi3='vim ~/.i3/config'
-alias vi3s='vim ~/.i3status.conf'
+alias vb='f=$(readlink -f $HOME/.bashrc); cd ${f:h}; vim $f; cd - > /dev/null; if [ "$(echo $BASH_VERSION)" ]; then source $HOME/.bashrc; fi'
+alias vz='f=$(readlink -f $HOME/.zshrc); cd ${f:h}; vim $f; cd - > /dev/null; if [ "$(echo $ZSH_VERSION)" ]; then source $HOME/.zshrc; fi'
+alias vv='f=$(readlink -f $HOME/.vimrc); cd ${f:h}; vim $f; cd - > /dev/null'
+alias vnv='f=$(readlink -f $HOME/.config/nvim/init.vim); cd ${f:h}; vim $f; cd - > /dev/null'
+alias vt='f=$(readlink -f $HOME/.tmux.conf); cd ${f:h}; vim $f; cd - > /dev/null'
+alias vi3='f=$(readlink -f $HOME/.i3/conf); cd ${f:h}; vim $f; cd - > /dev/null'
+alias vi3s='f=$(readlink -f $HOME/.i3status.conf); cd ${f:h}; vim $f; cd - > /dev/null'
 
 ## Inform users about upgrade path for grml's old zshrc layout, assuming that:
 ## /etc/skel/.zshrc was installed as ~/.zshrc,
