@@ -155,7 +155,8 @@ exec --no-startup-id xset r rate 150 25
 #exec --no-startup-id xset r rate 420 50
 
 ## if your resolution is crap ... play around with this in zsh
-#exec --no-startup-id xrandr --output Virtual-0 --primary --mode 1440x900
+# exec --no-startup-id xrandr --output Virtual-0 --primary --mode 1440x900 2> /dev/null
+# exec --no-startup-id xrandr --output Virtual-1 --primary --mode 1440x900 2> /dev/null
 
 ## dropbox? :D
 exec --no-startup-id dropbox start
