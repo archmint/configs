@@ -157,6 +157,9 @@ exec --no-startup-id xset r rate 150 25
 ## if your resolution is crap ... play around with this in zsh
 #exec --no-startup-id xrandr --output Virtual-0 --primary --mode 1440x900
 
+## dropbox? :D
+exec --no-startup-id dropbox start
+
 ## reset key repeat speed with $mod+x
 bindsym $mod+x exec --no-startup-id xset r rate 150 25
 
