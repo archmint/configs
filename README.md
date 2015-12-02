@@ -1,11 +1,11 @@
-# configs and more
+# configs and more #
 --
 
 ## Within this repository are configuration files for the following ##
 - .backgrounds/        - background images
 - .bashrc              - bash profile (sourced for new bash shell)
 - compton.conf         - compton configuration file
-- .i3status.conf       - ~/.i3status.conf
+- .i3status.conf       - i3status configuration file
 - .bash_profile        - bash profile (sourced on login -- not every new bash shell)
 - .i3/                 - i3-wm configuration directory
 - .idlerc/             - solarized idle profile
@@ -53,7 +53,8 @@
     * `ln -s` to "$HOME/scripts"
 - terminator/
     * `ln -s` to "$HOME/.config/terminator"
-- terminator-configs/  N/A
+- terminator-configs/
+    * N/A
 
 ## Usages ##
 - .backgrounds/
