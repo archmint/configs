@@ -49,7 +49,7 @@ alias vz='f=$(readlink -f $HOME/.zshrc); cd $(dirname $f); vim $f; cd - > /dev/n
 alias vv='f=$(readlink -f $HOME/.vimrc); cd $(dirname $f); vim $f; cd - > /dev/null'
 alias vnv='f=$(readlink -f $HOME/.config/nvim/init.vim); cd $(dirname $f); vim $f; cd - > /dev/null'
 alias vt='f=$(readlink -f $HOME/.tmux.conf); cd $(dirname $f); vim $f; cd - > /dev/null'
-alias vi3='f=$(readlink -f $HOME/.i3/conf); cd $(dirname $f); vim $f; cd - > /dev/null'
+alias vi3='f=$(readlink -f $HOME/.i3/config); cd $(dirname $f); vim $f; cd - > /dev/null'
 alias vi3s='f=$(readlink -f $HOME/.i3status.conf); cd $(dirname $f); vim $f; cd - > /dev/null'
 
 

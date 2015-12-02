@@ -90,13 +90,14 @@ syntax enable
 set background=dark                             " dark background!
 if exists("$DISPLAY") " in X11
     set t_Co=256
-    " colorscheme monokai
+    colorscheme monokai
     " colorscheme solarized
-    colorscheme jellybeans
+    " colorscheme jellybeans
     let airline_powerline_fonts=1
     " let airline_theme='badwolf'
     " let airline_theme='raven'
-    let airline_theme='jellybeans'
+    " let airline_theme='jellybeans'
+    let airline_theme='molokai'
 else
     set t_Co=8
     colorscheme zellner
@@ -172,7 +173,7 @@ set autoread            " autoread when file is changed
 
 set hidden              " current buffer can be hidden when not written to disk
 
-set scrolloff=4         " start scrolling when 4 lines away from top/bottom
+" set scrolloff=4         " start scrolling when 4 lines away from top/bottom (set if you like .. I don't like it)
 
 set mouse=""            " disable mouse (so annoying when you click or scroll)
 
@@ -201,7 +202,7 @@ nnoremap <silent> <leader>[l :echo "backgrounds: gruvbox (g), jellybeans (j), mo
 nnoremap <silent> <leader>[g :set background=dark<cr>:colorscheme gruvbox<cr>:AirlineRefresh<cr>
 nnoremap <silent> <leader>[j :set background=dark<cr>:colorscheme jellybeans<cr>:AirlineRefresh<cr>
 nnoremap <silent> <leader>[m :set background=dark<cr>:colorscheme monokai<cr>:AirlineRefresh<cr>
-nnoremap <silent> <leader>[s :set background=dark<cr>:colorscheme solarized<cr>:AirlineRefresh<cr>
+nnoremap <silent> <leader>[s :set background=dark<cr>:colorscheme solarized<cr>::AirlineTheme bubblegum<cr>:AirlineRefresh<cr>
 nnoremap <silent> <leader>[x :set background=dark<cr>:colorscheme xoria256<cr>:AirlineRefresh<cr>
 " }}}
 
