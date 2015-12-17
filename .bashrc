@@ -3,6 +3,8 @@
 ## If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+source $HOME/.profile
+
 ## General settings
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -24,7 +26,7 @@ stty -ctlecho
 ## Key Bindings
 # tab
 # bind 'set show-all-if-ambiguous on'
-bind '"\C-i" menu-complete'
+# bind '"\C-i" menu-complete'
 
 # hard screen clear
 bind -x '"\C-t": printf "\ec"'
@@ -91,7 +93,7 @@ _PS1_ret(){
     fi
 
     if [[ "$RET" -ne "0" ]]; then
-        printf '\001%*s%s\r%s\002%s ' "$(tput cols)" ":( $bat " "[0;31;1m" "$RET"
+        printf '\001%*s%s\r%s\002%s ' "$(tput cols)" ":($bat " "[0;31;1m" "$RET"
     else
         printf '\001%*s%s\r\002' "$(tput cols)" "$bat "
     fi;

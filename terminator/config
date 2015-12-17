@@ -4,12 +4,12 @@
   inactive_color_offset = 0.75
   scroll_tabbar = True
   suppress_multiple_term_dialog = True
-  title_use_system_font = False
   title_font = Inconsolata Medium 10
   title_inactive_bg_color = "#707277"
   title_inactive_fg_color = "#a4a6ab"
   title_transmit_bg_color = "#5b5955"
   title_transmit_fg_color = "#a4a6ab"
+  title_use_system_font = False
 [keybindings]
   broadcast_all = <Primary><Alt>b
   broadcast_group = None
@@ -62,47 +62,32 @@
 [plugins]
 [profiles]
   [[default]]
-    palette = "#5b5955:#c4756e:#559a6a:#9b8a4b:#6a8dca:#b577ac:#0fa9b8:#dbdde2:#707277:#f6a299:#82c896:#cab775:#98bbfb:#e5a4db:#53cad9:#f7f9ff"
-    foreground_color = "#a4a6ab"
     background_color = "#2d2c28"
-    cursor_color = "#a4a6aa"
-
     background_darkness = 0.89
     background_image = None
     background_type = transparent
-    font = Inconsolata Medium 11
+    cursor_color = "#a4a6aa"
+    font = Inconsolata-g for Powerline Medium 11
+    foreground_color = "#a4a6ab"
     icon_bell = False
+    palette = "#5b5955:#c4756e:#559a6a:#9b8a4b:#6a8dca:#b577ac:#0fa9b8:#dbdde2:#707277:#f6a299:#82c896:#cab775:#98bbfb:#e5a4db:#53cad9:#f7f9ff"
     scroll_on_output = False
     scrollback_lines = 5000
     scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
   [[solarized]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#b577ac:#2aa198:#93a1a1:#002b36:#cb4b16:#859900:#b58900:#268bd2:#6c71c4:#2aa198:#fdf6e3"
-    foreground_color = "#93a1a1"
     background_color = "#002b36"
-    cursor_color = "#268bd2"
-
     background_darkness = 0.87
     background_image = None
     background_type = transparent
-    font = Inconsolata Medium 11
-    icon_bell = False
-    scroll_on_output = False
-    scrollback_lines = 5000
-    scrollbar_position = hidden
-
-  [[solarized_old]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    cursor_color = "#a4a6aa"
+    font = Inconsolata-g for Powerline Medium 11
     foreground_color = "#839496"
-    background_color = "#002b36"
-    cursor_color = "#268bd2"
-
-    background_darkness = 0.87
-    background_image = None
-    background_type = transparent
-    font = Inconsolata Medium 11
     icon_bell = False
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     scroll_on_output = False
     scrollback_lines = 5000
     scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False

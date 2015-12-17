@@ -92,3 +92,88 @@
 - terminator-configs/
     * just some terminator colors schemes for you to choose from :) ... configure your own!
 
+
+## IMPORTANT PACKAGES ##
+
+This uses arch's package manager, `pacman`, and in many cases the arch AUR (which you can access easily with `yaourt`). You can find every package on [link to arch repo] or - if it's in the AUR - on [link to AUR].
+
+### PRETTY MUCH NECESSARY ###
+- git \*\*
+- i3-gaps-next-git (AUR) \*\*
+- i3lock \*\*
+- i3status \*\* (1)
+- rofi (AUR) \*\* (2)
+- terminator \*\* (3)
+- rofi-surfraw * (AUR)
+- dmenu
+- dzen2
+
+### NECESSARY SOUND INSTALLS ###
+- alsa-utils \*\*
+- ponymix \*\*
+- pulseaudio \*\*
+- pulseaudio-alsa \*\*
+
+### NETWORK MANAGEMENT ###
+- networkmanager \*
+- nm-connection-editor \*
+
+### IMPORTANT PACKAGES ###
+- python \*\*
+- python3 \*\*
+
+### USEFUL ###
+- lxappearance
+- powerline-fonts-git (AUR) \*
+- screen \*
+- scrot \*
+- tmux \*
+- ttf-dejavu \*
+- ttf-inconsolata \*
+
+### WEB ###
+- firefox-nightly (AUR) \* (4)
+- w3m \* (5)
+- elink
+- lynx
+
+### FUN ###
+- irssi \* (6)
+- screenfetch \*
+- figlet
+- weechat
+
+### MUSIC ###
+- pianorbar (AUR) \*
+- sox \*
+- blockify (AUR)
+- python-docopt
+- spotify (AUR) (PROP)
+
+## NOTES ABOUT IMPORTANT PACKAGES ##
+(AUR) - Located in the Arch User Repository (AUR). Otherwise, it's found with in the standard arch repository with pacman. [link to repo].
+(PROP) - Porprietary software.
+
+\*\* You should almost certainly install this. Either something will not work, or you will be lack a lot of functionality that most modern-day computers can handle. Install things at your discretion - for example, if you want to install your own Window Manager (WM) or Desktop Environment (DE).
+\* This is something that I always install. It's mostly for me to keep track of packages that I install over and over again. BUT! It can be used by you as well. Feel free to install (or uninstall!) these packages. :)
+
+(1) i3-status - There are certainly better options, but i3-status is still pretty great. It's minimal, but nice. The main downfall is that it cannot update specific items in the status bar. Feel free to use i3-blocks, dzen2, etc.
+(2) rofi - if you are not going to use rofi, then you should use some other menu or system launcheer, such as dmenu. Otherwise, **you __won't__ be able to able to launch dekstop applications or run commands without a terminal**.
+(3) terminator - my favorite terminal. You're welcome to use xterm or gnome-terminal or whatever floats your boat. I just love terminator - give it consideration, at least!
+(4) w3m - this is a console-based web browser with vim-like key bindings. It can support images, so I find that aspect quite useful. However, elink and lynx are both good replacements (neither can display images in the console, I don't think).
+(5) firefox-nightly - this is just a "most recent build" of firefox. It can be unstable from what I have heard, though have only experienced minor issues once and am not sure if I can attribute it to the -nightly build itself. However, you can choose whatever browser you want; the following I find to be best: chromium-browser; firefox; midori.
+(6) irssi - I use irssi instead of weechat. Sorry. q:)
+
+## CONVENIENT INSTALLATION LISTS ##
+
+### I3 \*\* ###
+(pacman) i3lock i3status
+(yaourt) i3-gaps-next-git
+
+### NECESSARY \*\* ###
+(pacman) alsa-utils git ponymix pulseaudio pulseaudio-alsa python python3 terminator
+(yaourt) rofi
+
+### ONES I ALWAYS INSTALL \* ###
+(pacman) irssi lxappearance networkmanager nm-connection-editor screen scrot sox tmux ttf-dejavu ttf-inconsolata
+(yaourt) firefox-nightly pianorbar powerline-fonts-git rofi-surfraw screenfetch

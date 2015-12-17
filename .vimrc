@@ -18,7 +18,7 @@ NeoBundle 'Shougo/neobundle.vim'                       " manage neobundle
 " Plugins that blend in
 NeoBundle 'L9'                                         " some utility functions and commands
 
-NeoBundle 'Raimondi/delimitMate'                       " auto-closes quotes, parems, brackets, etc
+" NeoBundle 'Raimondi/delimitMate'                       " auto-closes quotes, parems, brackets, etc
 
 NeoBundle 'Valloric/YouCompleteMe'                     " autocompletion engines (must run python2 .../YouCompleteMe/install.py)
 
@@ -29,7 +29,7 @@ NeoBundle 'airblade/vim-gitgutter'                     " display git diff in gut
 NeoBundle 'gioele/vim-autoswap'                        " automatically manages swaps files
 let g:autoswap_detect_tmux = 1                         " let vim autoswap in tmux (uses vim-autoswap) ** requires swap files **
 
-NeoBundle 'gorodinskiy/vim-coloresque'                 " see 256 colors in terminal!
+" NeoBundle 'gorodinskiy/vim-coloresque'                 " see 256 colors in terminal!
 
 NeoBundle 'luochen1990/rainbow'                        " make different parentheses layers different colors
 let g:rainbow_active = 1                               " activate rainbow parens
@@ -37,13 +37,13 @@ NeoBundle 'scrooloose/syntastic'                       " awesome syntax checker
 
 NeoBundle 'sickill/vim-pasta'                          " awesome auto-pasting
 
-NeoBundle 'tmhedberg/matchit'                          " extended matching with %
+" NeoBundle 'tmhedberg/matchit'                          " extended matching with %
 
 NeoBundle 'vim-airline'                                " awesome status bar
 
-NeoBundle 'vim-scripts/SearchComplete'                 " auto-completion in search (lazy :P)
+" NeoBundle 'vim-scripts/SearchComplete'                 " auto-completion in search (lazy :P)
 
-NeoBundle 'vim-signature'                              " visual marks and nice keybindings for dealing with marks
+" NeoBundle 'vim-signature'                              " visual marks and nice keybindings for dealing with marks
 
 
 " Plugins that don't blend in (require more insight as to how they work ... key bindings, etc)
@@ -51,7 +51,7 @@ NeoBundle 'a.vim'                                      " swap between header fil
 
 NeoBundle 'ctrlp.vim'                                  " fuzzy finder
 
-NeoBundle 'godlygeek/tabular'                          " awesome tab commands
+" NeoBundle 'godlygeek/tabular'                          " awesome tab commands (that I never really use)
 
 NeoBundle 'tomtom/tcomment_vim'                        " awesome commenting bindings
 
@@ -59,15 +59,15 @@ NeoBundle 'tpope/vim-fugitive'                         " AWESOME git wrapper
 
 NeoBundle 'tpope/vim-surround'                         " awesome surrounding characters changer
 
-NeoBundle 'vim-scripts/align'                          " align something on a character (like tabular I guess)
+" NeoBundle 'vim-scripts/align'                          " align something on a character (like tabular I guess)
 
 
 " Colorschemes and fun :)
 NeoBundle 'altercation/vim-colors-solarized'           " awesome solarized colors (make sure you have solarized palette)
 
-NeoBundle 'morhetz/gruvbox'                            " nice dark colorscheme
+" NeoBundle 'morhetz/gruvbox'                            " nice dark colorscheme
 
-NeoBundle 'guardian'                                   " light colorsheme
+" NeoBundle 'guardian'                                   " light colorsheme
 
 NeoBundle 'nanotech/jellybeans.vim'                    " nice very dark colorscheme
 
@@ -75,11 +75,11 @@ NeoBundle 'tomasr/molokai'
 
 NeoBundle 'crusoexia/vim-monokai'                     " nice medium dark colorscheme (my fav)
 
-NeoBundle 'vim-scripts/TeTrIs.vim'                     " play tetris with <leader>te
+" NeoBundle 'vim-scripts/TeTrIs.vim'                     " play tetris with <leader>te
 
 NeoBundle 'vim-scripts/xoria256.vim'                   " nice dark colorscheme
 
-NeoBundleFetch 'edkolev/tmuxline.vim'                  " good for generating nice tmuxline (don't import unless you are configuring tmuxline)
+" NeoBundleFetch 'edkolev/tmuxline.vim'                  " good for generating nice tmuxline (don't import unless you are configuring tmuxline)
 call neobundle#end()                                   " required
 filetype plugin indent on                              " required
 NeoBundleCheck                                         " If there are uninstalled bundles found on startup,
@@ -184,7 +184,7 @@ set timeoutlen=550      " time to wait after esc (default 1000 ... way too long)
 set fo-=o               " don't automatically insert comment after newline on commented line
 " }}}
 
-" *leader configuration for visual preferences* {{{
+" *le\der configuration for visual preferences* {{{
 " toggle background from light to dark
 nnoremap <silent> <leader>bg :let &background=(&background == "light" ? "dark" : "light")<cr>:silent AirlineRefresh<cr>:<cr>
 
@@ -207,14 +207,16 @@ nnoremap <silent> <leader>[x :set background=dark<cr>:colorscheme xoria256<cr>:A
 " }}}
 
 " *disable arrow keys* {{{
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
+" *DO THIS IF YOU ARE NEW*
+" *I have noticed a few glitches, though*
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
+" inoremap <Up> <NOP>
+" inoremap <Down> <NOP>
+" inoremap <Left> <NOP>
+" inoremap <Right> <NOP>
 "}}}
 
 " vim: foldmethod=marker

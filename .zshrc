@@ -17,12 +17,7 @@
 
 # (espeak 'Welcome'&) > /dev/null
 
-# vim(){
-#     (espeak 'vim'&)  > /dev/null;
-#     command vim $*;
-# }
-
-source $HOME/.profile
+export PATH="$HOME/scripts:$PATH"
 
 bindkey -v
 
@@ -237,9 +232,9 @@ setopt nonomatch
 #manzsh()  { /usr/bin/man zshall |  most +/"$1" ; }
 
 ## Switching shell safely and efficiently? http://www.zsh.org/mla/workers/2001/msg02410.html
-bash() {
-   NO_SWITCH="yes" command bash "$@"
-}
+# bash() {
+#    NO_SWITCH="yes" command bash "$@"
+# }
 restart () {
    exec $SHELL $SHELL_ARGS "$@"
 }

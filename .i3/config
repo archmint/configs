@@ -26,7 +26,10 @@ bindsym $mod+q kill
 
 ## start dmenu  (a program launcher... quite useful... how you open anything in i3)
 ## ** YOU MUST INSTALL `dmenu` FOR THIS TO WORK **m
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
+
+exec --no-startup-id rofi -key-run SuperL+d run -font "dejavu sans mono 12" -fg "#93a1a1" -bg "#002A38" -hlfg "#fdf6e3" -hlbg "#657b83" -o 85
+exec --no-startup-id rofi -key-run SuperL+s run -font "dejavu sans mono 12" -fg "#93a1a1" -bg "#002A38" -hlfg "#fdf6e3" -hlbg "#657b83" -o 85
 
 ## bind print key to screenshot key (do `xmodmap -pce > ~/.Xmodmap` for key map)
 ## ** MUST HAVE `scrot` INSTALLED **
@@ -159,7 +162,7 @@ exec --no-startup-id xset r rate 150 25
 # exec --no-startup-id xrandr --output Virtual-1 --primary --mode 1440x900 2> /dev/null
 
 ## dropbox? :D
-exec --no-startup-id dropbox start
+# exec --no-startup-id dropbox start
 
 ## reset key repeat speed with $mod+x
 bindsym $mod+x exec --no-startup-id xset r rate 150 25
