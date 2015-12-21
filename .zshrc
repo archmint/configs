@@ -15,11 +15,34 @@
 # Adjustments would still go to the .zshrc.local file.
 ################################################################################
 
-# (espeak 'Welcome'&) > /dev/null
+if [[ -n $DISPLAY ]]; then
+    if [[ ! "$(tmux ls 2>/dev/null)" ]]; then
+        tmux -2 new -s work 2>/dev/null;
+    fi;
+fi;
+
+if type figlet >/dev/null; then
+    if [[ $(date "+%H") -lt 6 ]]; then
+        TIME_OF_DAY="GO TO BED";
+    elif [[ $(date "+%H") -lt 12 ]]; then
+        TIME_OF_DAY="Good morning";
+    elif [[ $(date "+%H") -gt 7 ]]; then
+        TIME_OF_DAY="Good evening";
+    else
+        TIME_OF_DAY="Good afternoon";
+    fi;
+    figlet -f big "${TIME_OF_DAY}, ${USER}." 2>/dev/null;
+fi;
 
 export PATH="$HOME/scripts:$PATH"
 
 bindkey -v
+
+RANGER_LOAD_DEFAULT_RC="FALSE";
+
+eval $(dircolors ~/.dircolors);
+
+source /etc/profile.d/vte.sh 2>/dev/null;
 
 ## quick aliases
 alias tm='tmux -2'

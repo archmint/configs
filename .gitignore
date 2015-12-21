@@ -11,3 +11,7 @@ nvim/.netrwhist
 nvim/syntax/*
 nvim/undo/*
 nvim/.VimballRecord
+
+.irssi/saved_colors
+.weechat/logs/*
+away.log

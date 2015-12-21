@@ -5,5 +5,7 @@
 
 export PATH="$HOME/scripts/:$PATH"
 export EDITOR=vim
-export TERMINAL=terminator
+export BROWSER=firefox-nightly
+# export TERMINAL=terminator
+export TERMINAL=/usr/bin/termite
 

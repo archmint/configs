@@ -1,4 +1,4 @@
-## ~/.i3/config
+
 
 ## http://i3wm.org/docs/userguide.html for a complete reference!
 ## additionally, see `man i3` for info
@@ -26,10 +26,10 @@ bindsym $mod+q kill
 
 ## start dmenu  (a program launcher... quite useful... how you open anything in i3)
 ## ** YOU MUST INSTALL `dmenu` FOR THIS TO WORK **m
-# bindsym $mod+d exec dmenu_run
+bindsym $mod+shift+d exec dmenu_run
 
-exec --no-startup-id rofi -key-run SuperL+d run -font "dejavu sans mono 12" -fg "#93a1a1" -bg "#002A38" -hlfg "#fdf6e3" -hlbg "#657b83" -o 85
-exec --no-startup-id rofi -key-run SuperL+s run -font "dejavu sans mono 12" -fg "#93a1a1" -bg "#002A38" -hlfg "#fdf6e3" -hlbg "#657b83" -o 85
+bindsym $mod+d exec rofi -show run -font "dejavu sans mono 12"
+bindsym $mod+w exec rofi-surfraw
 
 ## bind print key to screenshot key (do `xmodmap -pce > ~/.Xmodmap` for key map)
 ## ** MUST HAVE `scrot` INSTALLED **
@@ -71,7 +71,7 @@ bindsym $mod+f fullscreen
 
 ## change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 ## toggle tiling / floating  (doesn't work that well ;P)
@@ -240,8 +240,8 @@ gaps inner 10
 gaps outer 0
 
 
-# RED MOON (my) COLORS
-# ###################         border          background      text
+# # RED MOON (my) COLORS
+# #####################       border          background      text
 # client.focused              #202020         #ec4431         #ec4431         #dd6d62
 # client.unfocused            #2c2c2b         #4d4d4d         #8faf9f         #dd6d62
 # client.focused_inactive     #2c2c2b         #4d4d4d         #8faf9f         #dd6d62
@@ -265,9 +265,9 @@ gaps outer 0
 
 ## SOLARIZED COLORS
 ###################         border          background      text
-client.focused              #dc322f         #dc322f         #ec4431         #dd6d62
-client.unfocused            #002A38         #002A38         #8faf9f         #dd6d62
-client.focused_inactive     #002A38         #002A38         #8faf9f         #dd6d62
+client.focused              #586e75         #586e75         #fdf6e3         #93a1a1
+client.unfocused            #002A38         #073642         #8faf9f         #93a1a1
+client.focused_inactive     #002A38         #002A38         #8faf9f         #93a1a1
 client.urgent               #e89393         #e89393         #ec4431
 
 ## the status bar

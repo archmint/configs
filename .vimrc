@@ -79,7 +79,8 @@ NeoBundle 'crusoexia/vim-monokai'                     " nice medium dark colorsc
 
 NeoBundle 'vim-scripts/xoria256.vim'                   " nice dark colorscheme
 
-" NeoBundleFetch 'edkolev/tmuxline.vim'                  " good for generating nice tmuxline (don't import unless you are configuring tmuxline)
+" NeoBundle 'edkolev/tmuxline.vim'                       " good for generating nice tmuxline (don't import unless you are configuring tmuxline)
+NeoBundleFetch 'edkolev/tmuxline.vim'                  " good for generating nice tmuxline (don't import unless you are configuring tmuxline)
 call neobundle#end()                                   " required
 filetype plugin indent on                              " required
 NeoBundleCheck                                         " If there are uninstalled bundles found on startup,
@@ -90,14 +91,15 @@ syntax enable
 set background=dark                             " dark background!
 if exists("$DISPLAY") " in X11
     set t_Co=256
-    colorscheme monokai
-    " colorscheme solarized
+    " colorscheme monokai
+    colorscheme solarized
     " colorscheme jellybeans
     let airline_powerline_fonts=1
+    let airline_theme='tomorrow'
     " let airline_theme='badwolf'
     " let airline_theme='raven'
     " let airline_theme='jellybeans'
-    let airline_theme='molokai'
+    " let airline_theme='molokai'
 else
     set t_Co=8
     colorscheme zellner
@@ -184,7 +186,7 @@ set timeoutlen=550      " time to wait after esc (default 1000 ... way too long)
 set fo-=o               " don't automatically insert comment after newline on commented line
 " }}}
 
-" *le\der configuration for visual preferences* {{{
+" *leader configuration for visual preferences* {{{
 " toggle background from light to dark
 nnoremap <silent> <leader>bg :let &background=(&background == "light" ? "dark" : "light")<cr>:silent AirlineRefresh<cr>:<cr>
 
@@ -202,7 +204,7 @@ nnoremap <silent> <leader>[l :echo "backgrounds: gruvbox (g), jellybeans (j), mo
 nnoremap <silent> <leader>[g :set background=dark<cr>:colorscheme gruvbox<cr>:AirlineRefresh<cr>
 nnoremap <silent> <leader>[j :set background=dark<cr>:colorscheme jellybeans<cr>:AirlineRefresh<cr>
 nnoremap <silent> <leader>[m :set background=dark<cr>:colorscheme monokai<cr>:AirlineRefresh<cr>
-nnoremap <silent> <leader>[s :set background=dark<cr>:colorscheme solarized<cr>::AirlineTheme bubblegum<cr>:AirlineRefresh<cr>
+nnoremap <silent> <leader>[s :set background=dark<cr>:colorscheme solarized<cr>::AirlineTheme badwolf<cr>:AirlineRefresh<cr>
 nnoremap <silent> <leader>[x :set background=dark<cr>:colorscheme xoria256<cr>:AirlineRefresh<cr>
 " }}}
 
