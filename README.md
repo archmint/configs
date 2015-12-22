@@ -93,62 +93,104 @@
     * just some terminator colors schemes for you to choose from :) ... configure your own!
 
 
-## IMPORTANT PACKAGES ##
+## LIST OF FREQUENTLY INSTALLED PACKAGES ##
 
-This uses arch's package manager, `pacman`, and in many cases the arch AUR (which you can access easily with `yaourt`). You can find every package on [link to arch repo] or - if it's in the AUR - on [link to AUR].
+### i3 ###
 
-### PRETTY MUCH NECESSARY ###
-- git \*\*
-- i3-gaps-next-git (AUR) \*\*
-- i3lock \*\*
-- i3status \*\* (1)
-- rofi (AUR) \*\* (2)
-- terminator \*\* (3)
-- rofi-surfraw * (AUR)
-- dmenu
-- dzen2
+#### PACMAN ####
+i3blocks
+i3lock
+i3status
 
-### NECESSARY SOUND INSTALLS ###
-- alsa-utils \*\*
-- ponymix \*\*
-- pulseaudio \*\*
-- pulseaudio-alsa \*\*
+#### AUR ####
+i3-gaps-next-git
+
+
+### FUNCTIONAL ###
+
+#### PACMAN ####
+conky
+git
+terminator
+rxvt-unicode
+dmenu
+ranger
+openssh
+dzen2
+python2
+python3
+lxappearance
+screen
+tmux
+scrot
+
+#### AUR ####
+dmenu2
+rofi-git
+
+
+### SOUND ###
+
+#### PACMAN ####
+- alsa-utils
+- ponymix
+- pulseaudio
+- pulseaudio-alsa
+
+
+### FONTS ###
+
+#### PACMAN ####
+ttf-dejavu
+ttf-inconsolata
+
+#### AUR ####
+powerline-fonts-git
+
+
+### INTERTUBES ###
+
+#### PACMAN ####
+w3m
+chromium
+elink
+lynx
+
+#### AUR ####
+firefox-nightly
+rofi-surfraw-git
+
+
+### FUNCTIONAL ###
 
 ### NETWORK MANAGEMENT ###
+
+#### PACMAN ####
 - networkmanager \*
 - nm-connection-editor \*
 
-### IMPORTANT PACKAGES ###
-- python \*\*
-- python3 \*\*
-
-### USEFUL ###
-- lxappearance
-- powerline-fonts-git (AUR) \*
-- screen \*
-- scrot \*
-- tmux \*
-- ttf-dejavu \*
-- ttf-inconsolata \*
-
-### WEB ###
-- firefox-nightly (AUR) \* (4)
-- w3m \* (5)
-- elink
-- lynx
 
 ### FUN ###
-- irssi \* (6)
-- screenfetch \*
-- figlet
-- weechat
+
+#### PACMAN ####
+irssi
+screenfetch
+figlet
+weechat
+
+#### AUR ####
+
 
 ### MUSIC ###
-- pianorbar (AUR) \*
-- sox \*
-- blockify (AUR)
-- python-docopt
-- spotify (AUR) (PROP)
+
+#### PACMAN ####
+sox
+
+#### yaourt ####
+pianorbar
+blockify
+python-docopt
+spotify
 
 ## NOTES ABOUT IMPORTANT PACKAGES ##
 (AUR) - Located in the Arch User Repository (AUR). Otherwise, it's found with in the standard arch repository with pacman. [link to repo].

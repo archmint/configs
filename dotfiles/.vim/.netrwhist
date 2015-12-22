@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/archmint/git/configs/setup'
+let g:netrw_dirhist_2='/'
+let g:netrw_dirhist_3='/home/archmint/.config/termite/config'
+let g:netrw_dirhist_4='/home/archmint/.config/termite'
+let g:netrw_dirhist_5='/home/archmint/git/configs/.configs/termite'
