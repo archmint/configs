@@ -19,12 +19,14 @@
 # - if it doesn't exists, create it
 # - if id exists but isn't attached, attach it
 # - otherwise it is attached, so continue on :)
-tmSessions="$(tmux ls)";
-if ! grep -q 'work' <<< $tmSessions; then
-    tmux -2 new -s work 2>/dev/null;
-elif grep -q 'work' <<< $tmSessions && ! grep -q 'attached' <<< $(grep 'work' <<< $tmSessions); then
-    tmux -2 attach-session -t work;
-fi;
+if [[ -n $DISPLAY ]]; then
+    tmSessions="$(tmux ls)";
+    if ! grep -q 'work' <<< $tmSessions; then
+        tmux -2 new -s work 2>/dev/null;
+    elif grep -q 'work' <<< $tmSessions && ! grep -q 'attached' <<< $(grep 'work' <<< $tmSessions); then
+        tmux -2 attach-session -t work;
+    fi;
+fi
 
 # Give a nice little greeting based on the time of day
 if [[ $(date "+%H") -lt 6 ]]; then
